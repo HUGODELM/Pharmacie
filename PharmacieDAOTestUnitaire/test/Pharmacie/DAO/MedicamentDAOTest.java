@@ -53,7 +53,7 @@ public class MedicamentDAOTest {
     /**
      * Test of read method, of class MedicamentDAO.
      */
-    //@Test
+    @Test
     public void testRead() throws Exception {
         System.out.println("read");
         int idmedoc = 0;
@@ -65,7 +65,7 @@ public class MedicamentDAOTest {
         Medicament result = instance.read(idmedoc);
         assertEquals("noms différents", expResult.getNOM(), result.getNOM());
         assertEquals("descriptions différentes", expResult.getDESCRIPTION(), result.getDESCRIPTION());
-        assertEquals("références différentes", expResult.getREFERENCE(), trim(result.getREFERENCE()));
+        assertEquals("références différentes", trim(expResult.getREFERENCE()), trim(result.getREFERENCE()));
         assertEquals("id différents", expResult.getIDMEDOC(), result.getIDMEDOC());
         try {
             result = instance.read(0);
@@ -91,7 +91,7 @@ public class MedicamentDAOTest {
         Medicament result = instance.create(obj);
         assertEquals("Noms différents", expResult.getNOM(), result.getNOM());
         assertEquals("Descriptions différentes", expResult.getDESCRIPTION(), result.getDESCRIPTION());
-        assertEquals("Descriptions différentes", expResult.getREFERENCE(), trim(result.getREFERENCE()));
+        assertEquals("Descriptions différentes", trim(expResult.getREFERENCE()), trim(result.getREFERENCE()));
         assertNotEquals("id non généré", expResult.getIDMEDOC(), result.getIDMEDOC());
         int idmedoc = result.getIDMEDOC();
         obj = new Medicament(0, "testNom2", "testDesc2", "testRef");
@@ -107,7 +107,7 @@ public class MedicamentDAOTest {
     /**
      * Test of update method, of class MedicamentDAO.
      */
-    //@Test
+    @Test
     public void testUpdate() throws Exception {
         System.out.println("update");
         Medicament obj = null;
@@ -122,7 +122,7 @@ public class MedicamentDAOTest {
     /**
      * Test of delete method, of class MedicamentDAO.
      */
-    //@Test
+    @Test
     public void testDelete() throws Exception {
         System.out.println("delete");
         Medicament obj = null;
@@ -135,7 +135,7 @@ public class MedicamentDAOTest {
     /**
      * Test of search method, of class MedicamentDAO.
      */
-    // @Test
+    @Test
     public void testSearch() throws Exception {
         System.out.println("search");
         String rech = "";

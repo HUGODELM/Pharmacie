@@ -110,13 +110,20 @@ public class MedicamentDAOTest {
     @Test
     public void testUpdate() throws Exception {
         System.out.println("update");
-        Medicament obj = null;
+        Medicament obj = new Medicament(0, "testNom", "testDesc", "testRef");
         MedicamentDAO instance = new MedicamentDAO();
-        Medicament expResult = null;
+        instance.setConnection(dbConnect);
+        obj = instance.create(obj);
+        obj.setNOM("TestNom2");
+        obj.setDESCRIPTION("testDesc2");
+        obj.setREFERENCE("testRef2");
+        Medicament expResult = obj;
         Medicament result = instance.update(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult.getNOM(), result.getNOM());
+        assertEquals(expResult.getDESCRIPTION(), result.getDESCRIPTION());
+        assertEquals("Descriptions différentes", trim(expResult.getREFERENCE()), trim(result.getREFERENCE()));
+        instance.delete(obj);
+        //TODO verifier que si on met à jour avec une ref deja prise, on a une exception
     }
 
     /**
@@ -125,11 +132,17 @@ public class MedicamentDAOTest {
     @Test
     public void testDelete() throws Exception {
         System.out.println("delete");
-        Medicament obj = null;
+        Medicament obj = new Medicament(0, "testNom", "testDesc", "testRef");
         MedicamentDAO instance = new MedicamentDAO();
+        instance.setConnection(dbConnect);
+        obj = instance.create(obj);
         instance.delete(obj);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            instance.read(obj.getIDMEDOC());
+            fail("exception de record introuvable non générée");
+        }
+        catch(SQLException e){}
+        //TODO vérifier qu'on a bien une exception en cas de record parent de clé étrangère
     }
 
     /**

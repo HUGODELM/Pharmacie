@@ -160,13 +160,20 @@ public class MedicamentDAOTest {
     @Test
     public void testSearch() throws Exception {
         System.out.println("search");
-        String rech = "";
+        Medicament obj1 = new Medicament(0, "TestNom", "TestDescription", "TestRef");
+        Medicament obj2 = new Medicament(0, "TestNom2", "TestDescription", "TestRef2");
+        String descrech = "TestDescription";
         MedicamentDAO instance = new MedicamentDAO();
-        List expResult = null;
-        List result = instance.search(rech);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setConnection(dbConnect);
+        obj1 = instance.create(obj1);
+        obj2 = instance.create(obj2);
+
+        List<Integer> result = instance.search(descrech);
+        if (result.size()!=2) {
+            fail("record introuvable");
+        }
+       instance.delete(obj1);
+       instance.delete(obj2);
     }
 
 }

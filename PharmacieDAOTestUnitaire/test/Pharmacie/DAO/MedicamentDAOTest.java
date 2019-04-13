@@ -119,11 +119,20 @@ public class MedicamentDAOTest {
         obj.setREFERENCE("testRef2");
         Medicament expResult = obj;
         Medicament result = instance.update(obj);
-        assertEquals(expResult.getNOM(), result.getNOM());
-        assertEquals(expResult.getDESCRIPTION(), result.getDESCRIPTION());
-        assertEquals("Descriptions différentes", trim(expResult.getREFERENCE()), trim(result.getREFERENCE()));
+        assertEquals("nom différents", expResult.getNOM(), result.getNOM());
+        assertEquals("descriptions différentes", expResult.getDESCRIPTION(), result.getDESCRIPTION());
+        assertEquals("références différentes", trim(expResult.getREFERENCE()), trim(result.getREFERENCE()));
+        Medicament obj2 = new Medicament(0, "testNom3", "testDesc3", "testRef3");
+        obj2 = instance.create(obj2);
+        Medicament result2 = obj2;
+        try {
+            obj2.setREFERENCE("testRef2");
+            result = instance.update(obj2);
+        } catch (SQLException e) {
+            System.out.println("erreur sql: " + e);
+        }
         instance.delete(obj);
-        //TODO verifier que si on met à jour avec une ref deja prise, on a une exception
+        instance.delete(obj2);
     }
 
     /**
@@ -140,8 +149,8 @@ public class MedicamentDAOTest {
         try {
             instance.read(obj.getIDMEDOC());
             fail("exception de record introuvable non générée");
+        } catch (SQLException e) {
         }
-        catch(SQLException e){}
         //TODO vérifier qu'on a bien une exception en cas de record parent de clé étrangère
     }
 

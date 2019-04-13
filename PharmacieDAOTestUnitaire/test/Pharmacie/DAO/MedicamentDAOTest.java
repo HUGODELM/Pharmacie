@@ -100,6 +100,7 @@ public class MedicamentDAOTest {
             fail("exception de référence unique non déclenchée");
             instance.delete(result2);
         } catch (SQLException e) {
+             System.out.println(e);
         }
         instance.delete(result);
     }

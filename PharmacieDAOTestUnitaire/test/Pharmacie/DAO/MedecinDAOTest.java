@@ -21,27 +21,29 @@ import static org.junit.Assert.*;
  * @author huggy
  */
 public class MedecinDAOTest {
+
     static Connection dbConnect;
+
     public MedecinDAOTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
-         dbConnect = DBConnection.getConnection();
+        dbConnect = DBConnection.getConnection();
         if (dbConnect == null) {
             System.out.println("connection invalide");
             System.exit(1);
         }
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -49,16 +51,27 @@ public class MedecinDAOTest {
     /**
      * Test of read method, of class MedecinDAO.
      */
-   // @Test
+    @Test
     public void testRead() throws Exception {
         System.out.println("read");
-        int id = 0;
+        int idmedoc = 0;
         MedecinDAO instance = new MedecinDAO();
-        Medecin expResult = null;
-        Medecin result = instance.read(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.setConnection(dbConnect);
+        Medecin obj = new Medecin(0, "testMatricule", "testNom", "testPrenom", "testTel");
+        Medecin expResult = instance.create(obj);
+        idmedoc = expResult.getIdmed();
+        Medecin result = instance.read(idmedoc);
+        assertEquals("Matricules différents", expResult.getMatricule(), result.getMatricule());
+        assertEquals("Noms différents", expResult.getNom(), result.getNom());
+        assertEquals("Prénoms différents", expResult.getPrenom(), result.getPrenom());
+        assertEquals("Téléphones différents", expResult.getTel(), result.getTel());
+        assertEquals("id différents", expResult.getIdmed(), result.getIdmed());
+        try {
+            result = instance.read(0);
+            fail("exception d'id inconnu non générée");
+        } catch (SQLException e) {
+        }
+        instance.delete(result);
     }
 
     /**
@@ -67,10 +80,10 @@ public class MedecinDAOTest {
     @Test
     public void testCreate() throws Exception {
         System.out.println("create");
-       Medecin obj = new Medecin(0, "testMatricule","testNom", "testPrenom", "testTel");
+        Medecin obj = new Medecin(0, "testMatricule", "testNom", "testPrenom", "testTel");
         MedecinDAO instance = new MedecinDAO();
         instance.setConnection(dbConnect);
-        Medecin expResult = new Medecin(0, "testMatricule","testNom", "testPrenom", "testTel");
+        Medecin expResult = new Medecin(0, "testMatricule", "testNom", "testPrenom", "testTel");
         Medecin result = instance.create(obj);
         assertEquals("Matricules différents", expResult.getMatricule(), result.getMatricule());
         assertEquals("Noms différents", expResult.getNom(), result.getNom());
@@ -78,7 +91,7 @@ public class MedecinDAOTest {
         assertEquals("Téléphones différents", expResult.getTel(), result.getTel());
         assertNotEquals("id non généré", expResult.getIdmed(), result.getIdmed());
         int idmedoc = result.getIdmed();
-        obj = new Medecin(0, "testMatricule2","testNom", "testPrenom", "testTel");
+        obj = new Medecin(0, "testMatricule2", "testNom", "testPrenom", "testTel");
         try {
             Medecin result2 = instance.create(obj);
             fail("exception de triplet nom/prenom/tel unique non déclenchée");
@@ -92,22 +105,44 @@ public class MedecinDAOTest {
     /**
      * Test of update method, of class MedecinDAO.
      */
-    //@Test
+    @Test
     public void testUpdate() throws Exception {
         System.out.println("update");
-        Medecin obj = null;
+        Medecin obj = new Medecin(0, "testMatricule", "testNom", "testPrenom", "testTel");
         MedecinDAO instance = new MedecinDAO();
-        Medecin expResult = null;
+        instance.setConnection(dbConnect);
+        obj = instance.create(obj);
+        obj.setMatricule("TestMatricule2");
+        obj.setNom("TestNom2");
+        obj.setPrenom("testPrenom2");
+        obj.setTel("testTel2");
+        Medecin expResult = obj;
         Medecin result = instance.update(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals("Matricules différents", expResult.getMatricule(), result.getMatricule());
+        assertEquals("Noms différents", expResult.getNom(), result.getNom());
+        assertEquals("Prénoms différents", expResult.getPrenom(), result.getPrenom());
+        assertEquals("Téléphones différents", expResult.getTel(), result.getTel());
+        Medecin obj2 = new Medecin(0, "testMatricule3", "testNom3", "testPrenom3", "testTel3");
+        obj2 = instance.create(obj2);
+        Medecin result2 = obj2;
+        //TODO résoudre problème de triplet
+        try {
+            obj.setNom("TestNom2");
+            obj.setPrenom("testPrenom2");
+            obj.setTel("testTel2");
+            result = instance.update(obj2);
+            fail("exception de triplet nom/prenom/tel unique non déclenchée");
+        } catch (SQLException e) {
+            System.out.println("erreur sql: " + e);
+        }
+        instance.delete(obj);
+        instance.delete(obj2);
     }
 
     /**
      * Test of delete method, of class MedecinDAO.
      */
-    //@Test
+    @Test
     public void testDelete() throws Exception {
         System.out.println("delete");
         Medecin obj = null;
@@ -116,5 +151,5 @@ public class MedecinDAOTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }

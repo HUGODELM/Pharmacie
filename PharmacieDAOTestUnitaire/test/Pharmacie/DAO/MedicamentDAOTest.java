@@ -129,6 +129,7 @@ public class MedicamentDAOTest {
         try {
             obj2.setREFERENCE("testRef2");
             result = instance.update(obj2);
+            fail("exception de réfrence unique non déclenchée");
         } catch (SQLException e) {
             System.out.println("erreur sql: " + e);
         }

@@ -6,6 +6,9 @@
 package Pharmacie.DAO;
 
 import Pharmacie.metier.Patient;
+import java.sql.Connection;
+import java.sql.SQLException;
+import myconnections.DBConnection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,12 +21,17 @@ import static org.junit.Assert.*;
  * @author huggy
  */
 public class PatientDAOTest {
-    
+    static Connection dbConnect;
     public PatientDAOTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        dbConnect = DBConnection.getConnection();
+        if (dbConnect == null) {
+            System.out.println("connection invalide");
+            System.exit(1);
+        }
     }
     
     @AfterClass
@@ -46,11 +54,22 @@ public class PatientDAOTest {
         System.out.println("read");
         int idpat = 0;
         PatientDAO instance = new PatientDAO();
-        Patient expResult = null;
+        instance.setConnection(dbConnect);
+        Patient obj = new Patient(0, "testNom", "testPrenom", "testTel");
+        Patient expResult = instance.create(obj);
+        idpat = expResult.getIdpat();
         Patient result = instance.read(idpat);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals("noms différents", expResult.getNom(), result.getNom());
+        assertEquals("prénoms différents", expResult.getPrenom(), result.getPrenom());
+        assertEquals("téléphones différentes", expResult.getTel(), result.getTel());
+        assertEquals("id différents", expResult.getIdpat(), result.getIdpat());
+        try {
+            result = instance.read(0);
+            fail("exception d'id inconnu non générée");
+        } catch (SQLException e) {
+            System.out.println("erreur sql: "+e);
+        }
+        instance.delete(result);
     }
 
     /**

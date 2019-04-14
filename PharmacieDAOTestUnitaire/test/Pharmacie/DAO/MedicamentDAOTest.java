@@ -79,8 +79,7 @@ public class MedicamentDAOTest {
      * Test of create method, of class MedicamentDAO.
      *
      * @throws java.lang.Exception
-     */
-    //TODO à finir 
+     */ 
     @Test
     public void testCreate() throws Exception {
         System.out.println("create");

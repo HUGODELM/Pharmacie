@@ -125,11 +125,10 @@ public class MedecinDAOTest {
         Medecin obj2 = new Medecin(0, "testMatricule3", "testNom3", "testPrenom3", "testTel3");
         obj2 = instance.create(obj2);
         Medecin result2 = obj2;
-        //TODO résoudre problème de triplet
         try {
-            obj.setNom("TestNom2");
-            obj.setPrenom("testPrenom2");
-            obj.setTel("testTel2");
+            obj2.setNom("TestNom2");
+            obj2.setPrenom("testPrenom2");
+            obj2.setTel("testTel2");
             result = instance.update(obj2);
             fail("exception de triplet nom/prenom/tel unique non déclenchée");
         } catch (SQLException e) {
@@ -144,12 +143,18 @@ public class MedecinDAOTest {
      */
     @Test
     public void testDelete() throws Exception {
-        System.out.println("delete");
-        Medecin obj = null;
+       System.out.println("delete");
+        Medecin obj = new Medecin(0, "testMatricule", "testNom", "testPrenom", "testTel");
         MedecinDAO instance = new MedecinDAO();
+        instance.setConnection(dbConnect);
+        obj = instance.create(obj);
         instance.delete(obj);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            instance.read(obj.getIdmed());
+            fail("exception de record introuvable non générée");
+        } catch (SQLException e) {
+        }
+        //TODO vérifier qu'on a bien une exception pour la suppression des records parents de clé étrangère
     }
 
 }

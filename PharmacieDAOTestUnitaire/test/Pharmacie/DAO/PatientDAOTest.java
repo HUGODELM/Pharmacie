@@ -21,10 +21,12 @@ import static org.junit.Assert.*;
  * @author huggy
  */
 public class PatientDAOTest {
+
     static Connection dbConnect;
+
     public PatientDAOTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
         dbConnect = DBConnection.getConnection();
@@ -33,15 +35,15 @@ public class PatientDAOTest {
             System.exit(1);
         }
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -67,7 +69,7 @@ public class PatientDAOTest {
             result = instance.read(0);
             fail("exception d'id inconnu non générée");
         } catch (SQLException e) {
-            System.out.println("erreur sql: "+e);
+            System.out.println("erreur sql: " + e);
         }
         instance.delete(result);
     }
@@ -78,7 +80,7 @@ public class PatientDAOTest {
     @Test
     public void testCreate() throws Exception {
         System.out.println("create");
-         Patient obj = new Patient(0, "testNom", "testPrenom", "testTel");
+        Patient obj = new Patient(0, "testNom", "testPrenom", "testTel");
         PatientDAO instance = new PatientDAO();
         instance.setConnection(dbConnect);
         Patient expResult = new Patient(0, "testNom", "testPrenom", "testTel");
@@ -94,7 +96,7 @@ public class PatientDAOTest {
             fail("exception de triplet unique(nom/prenom/tel) non déclenchée");
             instance.delete(result2);
         } catch (SQLException e) {
-             System.out.println(e);
+            System.out.println(e);
         }
         instance.delete(result);
     }
@@ -105,13 +107,32 @@ public class PatientDAOTest {
     @Test
     public void testUpdate() throws Exception {
         System.out.println("update");
-        Patient obj = null;
+        Patient obj = new Patient(0, "testNom", "testPrenom", "testTel");
         PatientDAO instance = new PatientDAO();
-        Patient expResult = null;
+        instance.setConnection(dbConnect);
+        obj = instance.create(obj);
+        obj.setNom("TestNom2");
+        obj.setPrenom("testPrenom2");
+        obj.setTel("testTel2");
+        Patient expResult = obj;
         Patient result = instance.update(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals("nom différents", expResult.getNom(), result.getNom());
+        assertEquals("prénoms différents", expResult.getPrenom(), result.getPrenom());
+        assertEquals("téléphones différents", expResult.getTel(), result.getTel());
+        Patient obj2 = new Patient(0, "testNom3", "testDesc3", "testRef3");
+        obj2 = instance.create(obj2);
+        Patient result2 = obj2;
+        try {
+            obj2.setNom("TestNom2");
+            obj2.setPrenom("testPrenom2");
+            obj2.setTel("testTel2");
+            result = instance.update(obj2);
+            fail("exception triplet unique(nom/prénom/tel) non déclenchée");
+        } catch (SQLException e) {
+            System.out.println("erreur sql: " + e);
+        }
+        instance.delete(obj);
+        instance.delete(obj2);
     }
 
     /**
@@ -120,11 +141,17 @@ public class PatientDAOTest {
     @Test
     public void testDelete() throws Exception {
         System.out.println("delete");
-        Patient obj = null;
+        Patient obj = new Patient(0, "testNom", "testPrenom", "testTel");
         PatientDAO instance = new PatientDAO();
+        instance.setConnection(dbConnect);
+        obj = instance.create(obj);
         instance.delete(obj);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            instance.read(obj.getIdpat());
+            fail("exception de record introuvable non générée");
+        } catch (SQLException e) {
+        }
+        //TODO vérifier qu'on a bien une exception pour la suppression des records parents de clé étrangère
     }
-    
+
 }

@@ -78,13 +78,25 @@ public class PatientDAOTest {
     @Test
     public void testCreate() throws Exception {
         System.out.println("create");
-        Patient obj = null;
+         Patient obj = new Patient(0, "testNom", "testPrenom", "testTel");
         PatientDAO instance = new PatientDAO();
-        Patient expResult = null;
+        instance.setConnection(dbConnect);
+        Patient expResult = new Patient(0, "testNom", "testPrenom", "testTel");
         Patient result = instance.create(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals("noms différents", expResult.getNom(), result.getNom());
+        assertEquals("prénoms différents", expResult.getPrenom(), result.getPrenom());
+        assertEquals("téléphone différents", expResult.getTel(), result.getTel());
+        assertNotEquals("id non généré", expResult.getIdpat(), result.getIdpat());
+        int idmedoc = result.getIdpat();
+        obj = new Patient(0, "testNom", "testPrenom", "testTel");
+        try {
+            Patient result2 = instance.create(obj);
+            fail("exception de triplet unique(nom/prenom/tel) non déclenchée");
+            instance.delete(result2);
+        } catch (SQLException e) {
+             System.out.println(e);
+        }
+        instance.delete(result);
     }
 
     /**

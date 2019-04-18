@@ -55,7 +55,7 @@ public class PatientDAO extends DAO<Patient> {
             pstm1.setString(3, obj.getTel());
             int n = pstm1.executeUpdate();
             if (n == 0) {
-                throw new SQLException("erreur de creation médicament, aucune ligne créée");
+                throw new SQLException("erreur de creation patient, aucune ligne créée");
             } else {
                 System.out.println(n + " ligne ajoutée");
             }
@@ -68,7 +68,7 @@ public class PatientDAO extends DAO<Patient> {
                     obj.setIdpat(idpat);
                     return read(idpat);
                 } else {
-                    throw new SQLException("erreur de création client, record introuvable");
+                    throw new SQLException("erreur de création prescription, record introuvable");
                 }
             }
         }
@@ -96,7 +96,7 @@ public class PatientDAO extends DAO<Patient> {
     }
     /**
      * Permet la suppression d'une entrée de la table api_patient
-	 * @param obj medecin à effacer
+	 * @param obj patient à effacer
          * @throws SQLException exception d'effacement
      */
     @Override

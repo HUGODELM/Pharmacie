@@ -121,6 +121,16 @@ public class MedecinDAO extends DAO<Medecin> {
             if (n == 0) {
                 throw new SQLException("Code inconnu");
             }
+        } catch (SQLException e) {
+            String req2 = "DELETE FROM API_PRESCRIPTION WHERE IDMED=?";
+            try (PreparedStatement pstm2 = dbConnect.prepareStatement(req2)) {
+                pstm2.setInt(1, obj.getIdmed());
+                int n = pstm2.executeUpdate();
+            }
+            try (PreparedStatement pstm = dbConnect.prepareStatement(req)) {
+                pstm.setInt(1, obj.getIdmed());
+                int n = pstm.executeUpdate();
+            }
         }
     }
 

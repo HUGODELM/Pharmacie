@@ -6,9 +6,11 @@
 package Pharmacie.DAO;
 
 import Pharmacie.metier.Medecin;
+import Pharmacie.metier.Prescription;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 /**
  *
@@ -109,6 +111,7 @@ public class MedecinDAO extends DAO<Medecin> {
 
     /**
      * Permet la suppression d'une entrée de la table api_medecin
+     *
      * @param obj medecin à effacer
      * @throws SQLException exception d'effacement
      */
@@ -122,14 +125,30 @@ public class MedecinDAO extends DAO<Medecin> {
                 throw new SQLException("Code inconnu");
             }
         } catch (SQLException e) {
+            Scanner sc = new Scanner(System.in);
             String req2 = "DELETE FROM API_PRESCRIPTION WHERE IDMED=?";
-            try (PreparedStatement pstm2 = dbConnect.prepareStatement(req2)) {
-                pstm2.setInt(1, obj.getIdmed());
-                int n = pstm2.executeUpdate();
-            }
-            try (PreparedStatement pstm = dbConnect.prepareStatement(req)) {
-                pstm.setInt(1, obj.getIdmed());
-                int n = pstm.executeUpdate();
+            String req3 = "SELECT * FROM API_PRESCRIPTION WHERE IDMED=?";
+            try (PreparedStatement pstm2 = dbConnect.prepareStatement(req2); PreparedStatement pstm = dbConnect.prepareStatement(req);
+                    PreparedStatement pstm3 = dbConnect.prepareStatement(req3)) {
+                pstm3.setInt(1, obj.getIdmed());
+                ResultSet rs = pstm3.executeQuery();
+                if (rs.next()) {
+                    int idpres = rs.getInt("IDPRES");
+                    int idmed = rs.getInt("IDMED");
+                    int idpat = rs.getInt("IDPAT");
+                    String date = rs.getString("DATEPRESCRIPTION");
+                    Prescription p = new Prescription(idpres, idmed, idpat, date);
+                    System.out.println("Pour supprimer le médecin sélectionner, vous devez supprimer la prescription suivante:\n" + p);
+                    System.out.println("Pour accepter la suppresion tapez 0, pour annuler taper n'importe quelle autre chiffre");
+                    int choix = sc.nextInt();
+                    if (choix == 0) {
+                        pstm2.setInt(1, obj.getIdmed());
+                        pstm2.executeUpdate();
+                        pstm.setInt(1, obj.getIdmed());
+                        pstm.executeUpdate();
+                    }
+                    
+                }
             }
         }
     }

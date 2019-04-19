@@ -138,7 +138,7 @@ public class MedecinDAO extends DAO<Medecin> {
                     int idpat = rs.getInt("IDPAT");
                     String date = rs.getString("DATEPRESCRIPTION");
                     Prescription p = new Prescription(idpres, idmed, idpat, date);
-                    System.out.println("Pour supprimer le médecin sélectionner, vous devez supprimer la prescription suivante:\n" + p);
+                    System.out.println("Pour supprimer le médicament sélectionner, vous devez supprimer la prescription suivante:\n" + p);
                     System.out.println("Pour accepter la suppresion tapez 0, pour annuler taper n'importe quelle autre chiffre");
                     int choix = sc.nextInt();
                     if (choix == 0) {

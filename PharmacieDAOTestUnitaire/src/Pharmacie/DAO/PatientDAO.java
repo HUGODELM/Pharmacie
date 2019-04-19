@@ -6,9 +6,11 @@
 package Pharmacie.DAO;
 
 import Pharmacie.metier.Patient;
+import Pharmacie.metier.Prescription;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 /**
  *
@@ -107,6 +109,32 @@ public class PatientDAO extends DAO<Patient> {
             int n = pstm.executeUpdate();
             if (n == 0) {
                 throw new SQLException("Code inconnu");
+            }
+        }catch (SQLException e) {
+            Scanner sc = new Scanner(System.in);
+            String req2 = "DELETE FROM API_PRESCRIPTION WHERE IDPAT=?";
+            String req3 = "SELECT * FROM API_PRESCRIPTION WHERE IDPAT=?";
+            try (PreparedStatement pstm2 = dbConnect.prepareStatement(req2); PreparedStatement pstm = dbConnect.prepareStatement(req);
+                    PreparedStatement pstm3 = dbConnect.prepareStatement(req3)) {
+                pstm3.setInt(1, obj.getIdpat());
+                ResultSet rs = pstm3.executeQuery();
+                if (rs.next()) {
+                    int idpres = rs.getInt("IDPRES");
+                    int idmed = rs.getInt("IDMED");
+                    int idpat = rs.getInt("IDPAT");
+                    String date = rs.getString("DATEPRESCRIPTION");
+                    Prescription p = new Prescription(idpres, idmed, idpat, date);
+                    System.out.println("Pour supprimer le patient sélectionner, vous devez supprimer la prescription suivante:\n" + p);
+                    System.out.println("Pour accepter la suppresion tapez 0, pour annuler taper n'importe quelle autre chiffre");
+                    int choix = sc.nextInt();
+                    if (choix == 0) {
+                        pstm2.setInt(1, obj.getIdpat());
+                        pstm2.executeUpdate();
+                        pstm.setInt(1, obj.getIdpat());
+                        pstm.executeUpdate();
+                    }
+                    
+                }
             }
         }
     }

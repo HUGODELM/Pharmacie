@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -111,6 +112,33 @@ public class MedicamentDAO extends DAO<Medicament> {
             int n = pstm.executeUpdate();
             if (n == 0) {
                 throw new SQLException("Code inconnu");
+            }
+        } catch (SQLException e) {
+            Scanner sc = new Scanner(System.in);
+            String req2 = "DELETE FROM API_INFOS WHERE IDMEDOC=?";
+            String req3 = "SELECT * FROM API_INFOS WHERE IDMEDOC=?";
+            try (PreparedStatement pstm2 = dbConnect.prepareStatement(req2); PreparedStatement pstm = dbConnect.prepareStatement(req);
+                    PreparedStatement pstm3 = dbConnect.prepareStatement(req3)) {
+                pstm3.setInt(1, obj.getIDMEDOC());
+                ResultSet rs = pstm3.executeQuery();
+                if (rs.next()) {
+                    int idinfo = rs.getInt("IDINFOS");
+                    int idpres = rs.getInt("IDPRES");
+                    int idmed = rs.getInt("IDMEDOC");
+                    String q = rs.getString("QUANTITE");
+                    String unite = rs.getString("UNITE");
+                    System.out.println("Pour supprimer le médecin sélectionner, vous devez supprimer la prescription suivante:");
+                    System.out.println("idinfos: "+idinfo+"\nidpres: "+idpres+"\nidmedoc: "+idmed+"\nquantite: "+q+"\nunite: "+unite);
+                    System.out.println("Pour accepter la suppresion tapez 0, pour annuler taper n'importe quelle autre chiffre");
+                    int choix = sc.nextInt();
+                    if (choix == 0) {
+                        pstm2.setInt(1, obj.getIDMEDOC());
+                        pstm2.executeUpdate();
+                        pstm.setInt(1, obj.getIDMEDOC());
+                        pstm.executeUpdate();
+                    }
+                    
+                }
             }
         }
     }

@@ -5,7 +5,10 @@
  */
 package Pharmacie.DAO;
 
+import Pharmacie.metier.Medecin;
 import Pharmacie.metier.Medicament;
+import Pharmacie.metier.Patient;
+import Pharmacie.metier.Prescription;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -79,7 +82,7 @@ public class MedicamentDAOTest {
      * Test of create method, of class MedicamentDAO.
      *
      * @throws java.lang.Exception
-     */ 
+     */
     @Test
     public void testCreate() throws Exception {
         System.out.println("create");
@@ -99,7 +102,7 @@ public class MedicamentDAOTest {
             fail("exception de référence unique non déclenchée");
             instance.delete(result2);
         } catch (SQLException e) {
-             System.out.println(e);
+            System.out.println(e);
         }
         instance.delete(result);
     }
@@ -144,7 +147,13 @@ public class MedicamentDAOTest {
         System.out.println("delete");
         Medicament obj = new Medicament(0, "testNom", "testDesc", "testRef");
         MedicamentDAO instance = new MedicamentDAO();
+        PrescriptionDAO instance2 = new PrescriptionDAO();
+        PatientDAO instance3 = new PatientDAO();
+        MedecinDAO instance4 = new MedecinDAO();
         instance.setConnection(dbConnect);
+        instance2.setConnection(dbConnect);
+        instance3.setConnection(dbConnect);
+        instance4.setConnection(dbConnect);
         obj = instance.create(obj);
         instance.delete(obj);
         try {
@@ -152,7 +161,14 @@ public class MedicamentDAOTest {
             fail("exception de record introuvable non générée");
         } catch (SQLException e) {
         }
-        //TODO vérifier qu'on a bien une exception en cas de record parent de clé étrangère
+        obj = new Medicament(0, "testNom", "testDesc", "testRef");
+        obj = instance.create(obj);
+        Medecin obj4 = new Medecin(0, "testMatricule", "testNom", "testPrenom", "testTel");
+        Patient obj3 = new Patient(0, "testNom", "testPrenom", "testTel");
+        obj3 = instance3.create(obj3);
+        obj4 = instance4.create(obj4);
+        Prescription obj2 = new Prescription(0, "01/06/94", obj4.getIdmed(), obj3.getIdpat());
+        obj2 = instance2.create(obj2);
     }
 
     /**
@@ -170,11 +186,11 @@ public class MedicamentDAOTest {
         obj2 = instance.create(obj2);
 
         List<Integer> result = instance.search(descrech);
-        if (result.size()!=2) {
+        if (result.size() != 2) {
             fail("record introuvable");
         }
-       instance.delete(obj1);
-       instance.delete(obj2);
+        instance.delete(obj1);
+        instance.delete(obj2);
     }
 
 }

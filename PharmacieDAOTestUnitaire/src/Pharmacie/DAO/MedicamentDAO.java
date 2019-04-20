@@ -127,7 +127,7 @@ public class MedicamentDAO extends DAO<Medicament> {
                     int idmed = rs.getInt("IDMEDOC");
                     String q = rs.getString("QUANTITE");
                     String unite = rs.getString("UNITE");
-                    System.out.println("Pour supprimer le médecin sélectionner, vous devez supprimer la prescription suivante:");
+                    System.out.println("Pour supprimer le médicament sélectionner, vous devez supprimer la prescription suivante:");
                     System.out.println("idinfos: "+idinfo+"\nidpres: "+idpres+"\nidmedoc: "+idmed+"\nquantite: "+q+"\nunite: "+unite);
                     System.out.println("Pour accepter la suppresion tapez 0, pour annuler taper n'importe quelle autre chiffre");
                     int choix = sc.nextInt();

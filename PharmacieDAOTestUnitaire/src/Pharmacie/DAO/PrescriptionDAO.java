@@ -23,7 +23,7 @@ public class PrescriptionDAO extends DAO<Prescription> {
      */
     @Override
     public Prescription read(int idpres) throws SQLException {
-        String req = "SELECT * FROM API_PPRESCRIPTION WHERE IDPRES=?";
+        String req = "SELECT * FROM API_PRESCRIPTION WHERE IDPRES=?";
         try (PreparedStatement pstm = dbConnect.prepareStatement(req)) {
             pstm.setInt(1, idpres);
             try (ResultSet rs = pstm.executeQuery()) {
@@ -31,7 +31,7 @@ public class PrescriptionDAO extends DAO<Prescription> {
                     int idmed = rs.getInt("IDMED");
                     int idpat = rs.getInt("IDPAT");
                     String date = rs.getString("DATEPRESCRIPTION");
-                    return new Prescription(idpres, idmed, idpat, date);
+                    return new Prescription(idpres, date, idmed, idpat);
                 } else {
                     throw new SQLException("Code inconnu");
                 }
@@ -46,8 +46,8 @@ public class PrescriptionDAO extends DAO<Prescription> {
      */
     @Override
     public Prescription create(Prescription obj) throws SQLException {
-        String req1 = "INSERT INTO API_PPRESCRIPTION(IDMED,IDPAT,DATEPRESCRIPTION) VALUES(?,?,?)";
-        String req2 = " SELECT IDPAT FROM API_PPRESCRIPTION WHERE IDMED=?  AND IDPAT=? AND DATEPRESCRIPTION=? ";
+        String req1 = "INSERT INTO API_PRESCRIPTION(IDMED,IDPAT,DATEPRESCRIPTION) VALUES(?,?,?)";
+        String req2 = " SELECT IDPRES FROM API_PRESCRIPTION WHERE IDMED=?  AND IDPAT=? AND DATEPRESCRIPTION=? ";
         try (PreparedStatement pstm1 = dbConnect.prepareStatement(req1);
                 PreparedStatement pstm2 = dbConnect.prepareStatement(req2)) {
             pstm1.setInt(1, obj.getIdmed());

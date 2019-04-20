@@ -31,7 +31,7 @@ public class Prescription {
      * @param idpat identifiant du patient
      * @param date date de la prescription
      */
-    public Prescription(int idpres, int idmed, int idpat, String date) {
+    public Prescription(int idpres, String date, int idmed, int idpat) {
         this.idpres = idpres;
         this.idmed = idmed;
         this.idpat = idpat;

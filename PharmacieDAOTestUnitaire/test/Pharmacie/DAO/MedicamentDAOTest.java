@@ -5,6 +5,7 @@
  */
 package Pharmacie.DAO;
 
+import Pharmacie.metier.Infos;
 import Pharmacie.metier.Medecin;
 import Pharmacie.metier.Medicament;
 import Pharmacie.metier.Patient;
@@ -150,10 +151,12 @@ public class MedicamentDAOTest {
         PrescriptionDAO instance2 = new PrescriptionDAO();
         PatientDAO instance3 = new PatientDAO();
         MedecinDAO instance4 = new MedecinDAO();
+        InfosDAO instance5=new InfosDAO();
         instance.setConnection(dbConnect);
         instance2.setConnection(dbConnect);
         instance3.setConnection(dbConnect);
         instance4.setConnection(dbConnect);
+        instance5.setConnection(dbConnect);
         obj = instance.create(obj);
         instance.delete(obj);
         try {
@@ -169,6 +172,17 @@ public class MedicamentDAOTest {
         obj4 = instance4.create(obj4);
         Prescription obj2 = new Prescription(0, "01/06/94", obj4.getIdmed(), obj3.getIdpat());
         obj2 = instance2.create(obj2);
+        Infos obj5=new Infos(0,obj.getIDMEDOC(),obj2.getIdpres(),15,"testunite");
+        obj5=instance5.create(obj5);
+        instance.delete(obj);
+        try {
+            instance5.read(obj5.getIdinfos());
+            fail("exception de suppression en cascade non effectuée");
+        } catch (SQLException e) {
+        }
+        instance4.delete(obj4);
+        instance3.delete(obj3);
+        
     }
 
     /**

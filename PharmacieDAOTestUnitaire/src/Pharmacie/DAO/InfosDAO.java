@@ -24,7 +24,7 @@ public class InfosDAO extends DAO<Infos>{
      */
     @Override
     public Infos read(int id) throws SQLException {
-        String req = "SELECT * FROM API_MEDICAMENT WHERE IDMEDOC=?";
+        String req = "SELECT * FROM API_INFOS WHERE IDINFOS=?";
         try (PreparedStatement pstm = dbConnect.prepareStatement(req)) {
             pstm.setInt(1, id);
             try (ResultSet rs = pstm.executeQuery()) {
@@ -70,6 +70,7 @@ public class InfosDAO extends DAO<Infos>{
             try (ResultSet rs = pstm2.executeQuery()) {
                 if (rs.next()) {
                     int idinfos = rs.getInt(1);
+                    System.out.println(idinfos);
                     obj.setIdinfos(idinfos);
                     return read(idinfos);
                 } else {

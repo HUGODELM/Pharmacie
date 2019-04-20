@@ -15,7 +15,7 @@ public class VuePress {
      * variable d'instance
      */
     private int idmedoc, idpress, idmed, idpat, idinfo, quantite;
-    private String date, unite, nom, desc;
+    private String date, unite, nom, desc,ref;
 
     /**
      * constructeur par défaut
@@ -38,7 +38,7 @@ public class VuePress {
      * @param nom nom du médicament
      * @param desc description du médicament
      */
-    public VuePress(int idmedoc, int idpress, int idmed, int idpat, int idinfo, int quantite, String date, String unite, String nom, String desc) {
+    public VuePress(int idmedoc, int idpress, int idmed, int idpat, int idinfo, int quantite, String date, String unite, String nom, String desc, String ref) {
         this.date = date;
         this.desc = desc;
         this.idinfo = idinfo;
@@ -49,6 +49,7 @@ public class VuePress {
         this.nom = nom;
         this.quantite = quantite;
         this.unite = unite;
+        this.ref=ref;
     }
 
     /**
@@ -132,6 +133,14 @@ public class VuePress {
      *
      * @return string contenant toute les infos de la classe
      */
+    /**
+     * getteur de la référence du médicament
+     * @return référence du médicament
+     */
+    public String getRef() {
+        return ref;
+    }
+
     @Override
     public String toString() {
         return "idmedoc:" + idmedoc + "\nidpress:" + idpress + "\nidmed:" + idmed + "\nidpat:" + idpat + "\nidinfo:" + idinfo + "\nquantite:" + quantite + "\ndate:" + date + "\nunite:" + unite + "\nnom:" + nom + "\ndesc:" + desc;

@@ -5,7 +5,9 @@
  */
 package Pharmacie.DAO;
 
+import Pharmacie.metier.Medecin;
 import Pharmacie.metier.Patient;
+import Pharmacie.metier.Prescription;
 import java.sql.Connection;
 import java.sql.SQLException;
 import myconnections.DBConnection;
@@ -144,6 +146,11 @@ public class PatientDAOTest {
         Patient obj = new Patient(0, "testNom", "testPrenom", "testTel");
         PatientDAO instance = new PatientDAO();
         instance.setConnection(dbConnect);
+        MedecinDAO instance3 = new MedecinDAO();
+        PrescriptionDAO instance2 = new PrescriptionDAO();
+        instance.setConnection(dbConnect);
+        instance2.setConnection(dbConnect);
+        instance3.setConnection(dbConnect);
         obj = instance.create(obj);
         instance.delete(obj);
         try {
@@ -151,7 +158,20 @@ public class PatientDAOTest {
             fail("exception de record introuvable non générée");
         } catch (SQLException e) {
         }
-        //TODO vérifier qu'on a bien une exception pour la suppression des records parents de clé étrangère
+        obj = new Patient(0, "testNom", "testPrenom", "testTel");
+        obj = instance.create(obj);
+        Medecin obj3 = new Medecin(0, "testMatricule", "testNom", "testPrenom", "testTel");
+        obj3=instance3.create(obj3);
+        Prescription obj2 = new Prescription(0, "01/06/94", obj3.getIdmed(),obj.getIdpat());
+        obj2 = instance2.create(obj2);
+        instance.delete(obj);
+        try {
+            instance2.read(obj2.getIdpres());
+            fail(" suppression en cascade non déclenchée");
+        } catch (SQLException ex) {
+
+        }
+       instance3.delete(obj3);
     }
 
 }

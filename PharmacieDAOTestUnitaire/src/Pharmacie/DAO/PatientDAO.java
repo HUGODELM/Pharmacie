@@ -125,14 +125,10 @@ public class PatientDAO extends DAO<Patient> {
                     String date = rs.getString("DATEPRESCRIPTION");
                     Prescription p = new Prescription(idpres, date, idmed, idpat);
                     System.out.println("Pour supprimer le patient sélectionner, vous devez supprimer la prescription suivante:\n" + p);
-                    System.out.println("Pour accepter la suppresion tapez 0, pour annuler taper n'importe quelle autre chiffre");
-                    int choix = sc.nextInt();
-                    if (choix == 0) {
                         pstm2.setInt(1, obj.getIdpat());
                         pstm2.executeUpdate();
                         pstm.setInt(1, obj.getIdpat());
                         pstm.executeUpdate();
-                    }
                     
                 }
             }

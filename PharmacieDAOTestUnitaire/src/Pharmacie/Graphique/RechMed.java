@@ -13,16 +13,23 @@ import javax.swing.JOptionPane;
  *
  * @author hugo.delmarche
  */
-public class CreaMed2 extends javax.swing.JPanel {
+public class RechMed extends javax.swing.JPanel {
 
     MedecinDAO meddao = null;
-    
+    Medecin m;
+
     /**
      * Creates new form CreaMed2
      */
-    public CreaMed2() {
+    public RechMed() {
         initComponents();
-        txtIdMed.setEditable(false);
+        txtMatMed.setEditable(false);
+        txtNomMed.setEditable(false);
+        txtPreMed.setEditable(false);
+        txtTelMed.setEditable(false);
+        BtMajMed.setEnabled(false);
+        BtDelMed.setEnabled(false);
+
     }
 
     public void setMeddao(MedecinDAO meddao) {
@@ -49,8 +56,10 @@ public class CreaMed2 extends javax.swing.JPanel {
         txtPreMed = new javax.swing.JTextField();
         txtMatMed = new javax.swing.JTextField();
         txtTelMed = new javax.swing.JTextField();
-        btCreaMed = new javax.swing.JButton();
+        btRechMed = new javax.swing.JButton();
         btRetour = new javax.swing.JButton();
+        BtMajMed = new javax.swing.JButton();
+        BtDelMed = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -70,10 +79,10 @@ public class CreaMed2 extends javax.swing.JPanel {
             }
         });
 
-        btCreaMed.setText("Création");
-        btCreaMed.addActionListener(new java.awt.event.ActionListener() {
+        btRechMed.setText("Recherche");
+        btRechMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCreaMedActionPerformed(evt);
+                btRechMedActionPerformed(evt);
             }
         });
 
@@ -81,6 +90,20 @@ public class CreaMed2 extends javax.swing.JPanel {
         btRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btRetourActionPerformed(evt);
+            }
+        });
+
+        BtMajMed.setText("Mise à jour");
+        BtMajMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtMajMedActionPerformed(evt);
+            }
+        });
+
+        BtDelMed.setText("Suppression");
+        BtDelMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtDelMedActionPerformed(evt);
             }
         });
 
@@ -95,7 +118,7 @@ public class CreaMed2 extends javax.swing.JPanel {
                     .addComponent(NomMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PreMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(MatMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TelMed, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
+                    .addComponent(TelMed, javax.swing.GroupLayout.PREFERRED_SIZE, 57, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtIdMed)
@@ -105,11 +128,15 @@ public class CreaMed2 extends javax.swing.JPanel {
                     .addComponent(txtTelMed, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(btCreaMed)
-                .addGap(54, 54, 54)
+                .addContainerGap()
+                .addComponent(btRechMed)
+                .addGap(18, 18, 18)
+                .addComponent(BtMajMed)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(BtDelMed)
+                .addGap(18, 18, 18)
                 .addComponent(btRetour)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,26 +163,29 @@ public class CreaMed2 extends javax.swing.JPanel {
                     .addComponent(txtTelMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCreaMed)
-                    .addComponent(btRetour))
+                    .addComponent(btRechMed)
+                    .addComponent(btRetour)
+                    .addComponent(BtMajMed)
+                    .addComponent(BtDelMed))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btCreaMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreaMedActionPerformed
+    private void btRechMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRechMedActionPerformed
         try {
-            String nom = txtNomMed.getText();
-            String prenom = txtPreMed.getText();
-            String matricule = txtMatMed.getText();
-            String telephone = txtTelMed.getText();
-            Medecin med = new Medecin(0, matricule, nom, prenom, telephone);
-            med = meddao.create(med);
-            txtIdMed.setText("" + med.getIdmed());
-            JOptionPane.showMessageDialog(this, "Médecin créé", "succès", JOptionPane.INFORMATION_MESSAGE);
+            int id = Integer.parseInt(txtIdMed.getText());
+            m = meddao.read(id);
+            txtMatMed.setText(m.getMatricule());
+            txtNomMed.setText(m.getNom());
+            txtPreMed.setText(m.getPrenom());
+            txtTelMed.setText(m.getTel());
+            BtMajMed.setEnabled(true);
+            BtDelMed.setEnabled(true);
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "ERREUR", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btCreaMedActionPerformed
+    }//GEN-LAST:event_btRechMedActionPerformed
 
     private void txtMatMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatMedActionPerformed
         // TODO add your handling code here:
@@ -165,14 +195,55 @@ public class CreaMed2 extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btRetourActionPerformed
 
+    private void BtMajMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtMajMedActionPerformed
+        if (txtIdMed.isEditable()) {
+            txtIdMed.setEditable(false);
+            txtMatMed.setEditable(true);
+            txtNomMed.setEditable(true);
+            txtPreMed.setEditable(true);
+            txtTelMed.setEditable(true);
+            JOptionPane.showMessageDialog(this, "Modifier les champs que vous souhaitez mettre à jour puis cliquer à nouveau sur Mise à jour", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            try {
+                m.setMatricule(txtMatMed.getText());
+                m.setNom(txtNomMed.getText());
+                m.setPrenom(txtPreMed.getText());
+                m.setTel(txtTelMed.getText());
+                meddao.update(m);
+                JOptionPane.showMessageDialog(this, "Médecin mis à jour", "succès", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "ERREUR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }//GEN-LAST:event_BtMajMedActionPerformed
+
+    private void BtDelMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDelMedActionPerformed
+        try {
+            meddao.delete(m);
+            JOptionPane.showMessageDialog(this, "Médecin supprimer", "succès", JOptionPane.INFORMATION_MESSAGE);
+            txtIdMed.setText(" ");
+            txtMatMed.setText(" ");
+            txtNomMed.setText(" ");
+            txtPreMed.setText(" ");
+            txtTelMed.setText(" ");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "ERREUR", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_BtDelMedActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtDelMed;
+    private javax.swing.JButton BtMajMed;
     private javax.swing.JLabel IdMed;
     private javax.swing.JLabel MatMed;
     private javax.swing.JLabel NomMed;
     private javax.swing.JLabel PreMed;
     private javax.swing.JLabel TelMed;
-    private javax.swing.JButton btCreaMed;
+    private javax.swing.JButton btRechMed;
     private javax.swing.JButton btRetour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtIdMed;

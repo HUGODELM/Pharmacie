@@ -211,6 +211,11 @@ public class RechMed extends javax.swing.JPanel {
                 m.setTel(txtTelMed.getText());
                 meddao.update(m);
                 JOptionPane.showMessageDialog(this, "Médecin mis à jour", "succès", JOptionPane.INFORMATION_MESSAGE);
+                txtIdMed.setEditable(true);
+                txtMatMed.setEditable(false);
+                txtNomMed.setEditable(false);
+                txtPreMed.setEditable(false);
+                txtTelMed.setEditable(false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "ERREUR", JOptionPane.ERROR_MESSAGE);
             }

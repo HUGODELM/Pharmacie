@@ -54,21 +54,33 @@ public class CreaMed2 extends javax.swing.JPanel {
 
         jLabel1.setText("jLabel1");
 
+        setLayout(new java.awt.CardLayout());
+
         IdMed.setText("identifiant");
+        add(IdMed, "card2");
 
         NomMed.setText("Nom");
+        add(NomMed, "card3");
 
         PreMed.setText("Prénom");
+        add(PreMed, "card4");
 
         MatMed.setText("Matricule");
+        add(MatMed, "card5");
 
         TelMed.setText("Téléphone");
+        add(TelMed, "card6");
+        add(txtIdMed, "card7");
+        add(txtNomMed, "card8");
+        add(txtPreMed, "card9");
 
         txtMatMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatMedActionPerformed(evt);
             }
         });
+        add(txtMatMed, "card10");
+        add(txtTelMed, "card11");
 
         btCreaMed.setText("Création");
         btCreaMed.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +88,7 @@ public class CreaMed2 extends javax.swing.JPanel {
                 btCreaMedActionPerformed(evt);
             }
         });
+        add(btCreaMed, "card12");
 
         btRetour.setText("Retour");
         btRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -83,63 +96,7 @@ public class CreaMed2 extends javax.swing.JPanel {
                 btRetourActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(IdMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NomMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PreMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(MatMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TelMed, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtIdMed)
-                    .addComponent(txtNomMed)
-                    .addComponent(txtPreMed)
-                    .addComponent(txtMatMed)
-                    .addComponent(txtTelMed, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-                .addGap(71, 71, 71))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(btCreaMed)
-                .addGap(54, 54, 54)
-                .addComponent(btRetour)
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IdMed)
-                    .addComponent(txtIdMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NomMed)
-                    .addComponent(txtNomMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PreMed)
-                    .addComponent(txtPreMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MatMed)
-                    .addComponent(txtMatMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TelMed)
-                    .addComponent(txtTelMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCreaMed)
-                    .addComponent(btRetour))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        add(btRetour, "card13");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCreaMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreaMedActionPerformed

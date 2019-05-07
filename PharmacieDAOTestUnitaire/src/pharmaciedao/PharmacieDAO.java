@@ -527,43 +527,47 @@ public class PharmacieDAO {
     }
 
     public static void main(String[] args) throws SQLException {
-        /*test des méthode d'affichage des prescription lié à un médecin ou un patient
+        //test des méthode d'affichage des prescription lié à un médecin ou un patient
         Scanner sc2 = new Scanner(System.in);
+        Patient patactu = null;
         MedecinDAO mededao = null;
         PatientDAO patdao = null;
         Prescription presactu = null;
         PrescriptionDAO presdao = null;
-         Connection dbConnect = DBConnection.getConnection();
+        Connection dbConnect = DBConnection.getConnection();
         if (dbConnect == null) {
             System.out.println("connection invalide");
             System.exit(1);
         }
         mededao = new MedecinDAO();
-         mededao.setConnection(dbConnect);
+        mededao.setConnection(dbConnect);
         presdao = new PrescriptionDAO();
         presdao.setConnection(dbConnect);
         patdao = new PatientDAO();
         patdao.setConnection(dbConnect);
-       
-       
+
         //TestSearchPat
-        System.out.print("Id du patient? ");
-        int rech = sc2.nextInt();
+        System.out.print("Nom du Patient ");
+        String rech = sc2.nextLine();
         List idTab;
         idTab = patdao.search(rech);
-        if ((int) idTab.get(0) != 0) {
-            for (int i = 0; i < idTab.size(); i++) {
-                try {
+        try {
+            if ((int) idTab.get(0) != 0) {
+                presactu = presdao.read((int) idTab.get(0));
+                patactu=patdao.read(presactu.getIdpat());
+                System.out.println(patactu);
+                for (int i = 0; i < idTab.size(); i++) {
                     presactu = presdao.read((int) idTab.get(i));
                     System.out.println(presactu);
-                } catch (SQLException e) {
-                   System.out.println("erreur " + e);
+
                 }
             }
+        } catch (SQLException e) {
+            System.out.println("erreur " + e);
         }
         //TestSearchMed
-        System.out.print("Id du Medecin? ");
-        int rech2 = sc2.nextInt();
+        System.out.print("Nom du Medecin? ");
+        String rech2 = sc2.nextLine();
         List idTab2;
         idTab2 = mededao.search(rech2);
         if ((int) idTab2.get(0) != 0) {
@@ -575,7 +579,7 @@ public class PharmacieDAO {
                    System.out.println("erreur " + e);
                 }
             }
-        }*/
+        }
         PharmacieDAO gstn = new PharmacieDAO();
         gstn.gestion();
     }

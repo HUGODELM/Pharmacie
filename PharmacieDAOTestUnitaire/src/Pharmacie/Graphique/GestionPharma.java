@@ -45,7 +45,6 @@ public class GestionPharma extends javax.swing.JFrame {
     private void initComponents() {
 
         creaMed21 = new Pharmacie.Graphique.CreaMed2();
-        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuMed = new javax.swing.JMenu();
         MenuMedCrea = new javax.swing.JMenuItem();
@@ -55,7 +54,6 @@ public class GestionPharma extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
-        getContentPane().add(jPanel1, "card2");
 
         MenuMed.setText("Médecin");
 
@@ -140,6 +138,5 @@ public class GestionPharma extends javax.swing.JFrame {
     private javax.swing.JMenuItem RechMed;
     private Pharmacie.Graphique.CreaMed2 creaMed21;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

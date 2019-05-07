@@ -6,7 +6,9 @@
 package Pharmacie.Graphique;
 
 import Pharmacie.DAO.PatientDAO;
+import Pharmacie.DAO.PrescriptionDAO;
 import Pharmacie.metier.Patient;
+import Pharmacie.metier.Prescription;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +16,8 @@ import javax.swing.JOptionPane;
  * @author hugo.delmarche
  */
 public class RechPat extends javax.swing.JPanel {
-
+    Prescription pres;
+    PrescriptionDAO presdao=null;
     PatientDAO patdao = null;
     Patient p;
 
@@ -30,7 +33,11 @@ public class RechPat extends javax.swing.JPanel {
         BtDelPat.setEnabled(false);
 
     }
-
+    
+    public void setPresdao(PrescriptionDAO presdao) {
+        this.presdao = presdao;
+    }
+    
     public void setMeddao(PatientDAO presdao) {
         this.patdao = presdao;
     }
@@ -232,7 +239,7 @@ public class RechPat extends javax.swing.JPanel {
     }//GEN-LAST:event_BtDelPatActionPerformed
 
     private void AffPresPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AffPresPatActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_AffPresPatActionPerformed
 
 

@@ -19,8 +19,10 @@ import java.util.Scanner;
  * @author huggy
  */
 public class PatientDAO extends DAO<Patient> {
+
     /**
-     permet de lire un un ligne de la table api_patient
+     * permet de lire un un ligne de la table api_patient
+     *
      * @param idpat identifiant du patient recherché
      * @return T patient trouvé
      * @throws SQLException patient non trouvé
@@ -42,11 +44,13 @@ public class PatientDAO extends DAO<Patient> {
             }
         }
     }
+
     /**
-    * Permet de créer une entrée dans la table api_patient
-	 * @param obj medicament à créer
-         * @return T medicament créé
-         * @throws SQLException exception de création
+     * Permet de créer une entrée dans la table api_patient
+     *
+     * @param obj medicament à créer
+     * @return T medicament créé
+     * @throws SQLException exception de création
      */
     @Override
     public Patient create(Patient obj) throws SQLException {
@@ -77,11 +81,14 @@ public class PatientDAO extends DAO<Patient> {
             }
         }
     }
+
     /**
-     * Permet de mettre à jour les données d'une entrée dans la table api_patient
-	 * @param obj patient à mettre à jour
-         * @throws SQLException exception  mise à jour
-         * @return T patient mis à jour
+     * Permet de mettre à jour les données d'une entrée dans la table
+     * api_patient
+     *
+     * @param obj patient à mettre à jour
+     * @throws SQLException exception mise à jour
+     * @return T patient mis à jour
      */
     @Override
     public Patient update(Patient obj) throws SQLException {
@@ -98,10 +105,12 @@ public class PatientDAO extends DAO<Patient> {
             return read(obj.getIdpat());
         }
     }
+
     /**
      * Permet la suppression d'une entrée de la table api_patient
-	 * @param obj patient à effacer
-         * @throws SQLException exception d'effacement
+     *
+     * @param obj patient à effacer
+     * @throws SQLException exception d'effacement
      */
     @Override
     public void delete(Patient obj) throws SQLException {
@@ -112,7 +121,7 @@ public class PatientDAO extends DAO<Patient> {
             if (n == 0) {
                 throw new SQLException("Code inconnu");
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             Scanner sc = new Scanner(System.in);
             String req2 = "DELETE FROM API_PRESCRIPTION WHERE IDPAT=?";
             String req3 = "SELECT * FROM API_PRESCRIPTION WHERE IDPAT=?";
@@ -127,44 +136,45 @@ public class PatientDAO extends DAO<Patient> {
                     String date = rs.getString("DATEPRESCRIPTION");
                     Prescription p = new Prescription(idpres, date, idmed, idpat);
                     System.out.println("Pour supprimer le patient sélectionner, vous devez supprimer la prescription suivante:\n" + p);
-                        pstm2.setInt(1, obj.getIdpat());
-                        pstm2.executeUpdate();
-                        pstm.setInt(1, obj.getIdpat());
-                        pstm.executeUpdate();
-                    
+                    pstm2.setInt(1, obj.getIdpat());
+                    pstm2.executeUpdate();
+                    pstm.setInt(1, obj.getIdpat());
+                    pstm.executeUpdate();
+
                 }
             }
         }
     }
+
     /**
      * méthode permettant de retourner toute les prescription liée à un patient
+     *
      * @param rech identifiant du patient
      * @return arraylist contenant tous les id des prescriptions trouvées
-     * @throws SQLException 
+     * @throws SQLException
      */
-     public List search(int rech) throws SQLException {
-        String query1 = "SELECT * FROM API_PRESCRIPTION WHERE IDPAT = ?";
-        List<Integer> idTab=new ArrayList();
+    public List search(String rech) throws SQLException {
+        String query1 = "SELECT IDPAT, IDPRES,DATEPRESCRIPTION,IDMED FROM API_PRESCRIPTION NATURAL JOIN API_PATIENT WHERE  NOM LIKE ?";
+        List<Integer> idTab = new ArrayList();
         boolean trouver = false;
         try (PreparedStatement pstm = dbConnect.prepareStatement(query1)) {
-            pstm.setInt(1, rech );
+            pstm.setString(1, "%" + rech + "%");
             try (ResultSet rs = pstm.executeQuery()) {
                 while (rs.next()) {
                     trouver = true;
                     int id = rs.getInt("IDPRES");
                     idTab.add(id);
-                    
+
                 }
             }
+        } catch (SQLException e) {
+            System.out.println("erreur " + e);
         }
-        catch(SQLException e){
-            System.out.println("erreur "+e);
-        }
-        if(!trouver){
+        if (!trouver) {
             System.out.println("Aucune prescription trouvée...");
             idTab.add(0);
         }
-            return idTab;
+        return idTab;
     }
 
 }

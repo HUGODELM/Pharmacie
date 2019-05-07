@@ -150,12 +150,12 @@ public class MedecinDAO extends DAO<Medecin> {
             }
         }
     }
-    public List search(int rech) throws SQLException {
-        String query1 = "SELECT * FROM API_PRESCRIPTION WHERE IDMED = ?";
+    public List search(String rech) throws SQLException {
+        String query1 = "SELECT IDPAT, IDPRES,DATEPRESCRIPTION,IDMED FROM API_PRESCRIPTION NATURAL JOIN API_MEDECIN WHERE  NOM LIKE ?";
         List<Integer> idTab=new ArrayList();
         boolean trouver = false;
         try (PreparedStatement pstm = dbConnect.prepareStatement(query1)) {
-            pstm.setInt(1, rech );
+            pstm.setString(1,"%" + rech + "%");
             try (ResultSet rs = pstm.executeQuery()) {
                 while (rs.next()) {
                     trouver = true;

@@ -8,9 +8,11 @@ package pharmaciedao;
 import Pharmacie.DAO.MedecinDAO;
 import Pharmacie.DAO.MedicamentDAO;
 import Pharmacie.DAO.PatientDAO;
+import Pharmacie.DAO.PrescriptionDAO;
 import Pharmacie.metier.Medecin;
 import Pharmacie.metier.Medicament;
 import Pharmacie.metier.Patient;
+import Pharmacie.metier.Prescription;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -251,9 +253,9 @@ public class PharmacieDAO {
         }
     }
 
-     /**
-      * menu s'occupant de la gestion de la table médecin
-      */
+    /**
+     * menu s'occupant de la gestion de la table médecin
+     */
     public void menuMed() {
         System.out.println("MEDECIN");
         int choix;
@@ -280,9 +282,10 @@ public class PharmacieDAO {
 
         }
     }
+
     /**
-      * menu s'occupant de la gestion de la table patient
-      */
+     * menu s'occupant de la gestion de la table patient
+     */
     public void menuPat() {
         System.out.println("PATIENT");
         sc.skip("\n");
@@ -310,10 +313,10 @@ public class PharmacieDAO {
 
         }
     }
+
     /**
-     * méthode permettant l'ajout d'un nouveau médecin dans la base de
-     * données grâce a l'appel de la méthode create contenue dans la classe
-     * MedecinDAO
+     * méthode permettant l'ajout d'un nouveau médecin dans la base de données
+     * grâce a l'appel de la méthode create contenue dans la classe MedecinDAO
      */
     public void nouvMed() {
         System.out.print("Nom? ");
@@ -333,8 +336,9 @@ public class PharmacieDAO {
         }
 
     }
+
     /**
-     *  méthode permettant la recherche d'un médecin de la base de données sur
+     * méthode permettant la recherche d'un médecin de la base de données sur
      * base de l'identifiant grâce a l'appel de la méthode read contenue dans la
      * classe MedecinDAO
      */
@@ -348,10 +352,10 @@ public class PharmacieDAO {
             System.out.println("erreur: " + e);
         }
     }
+
     /**
      * méthode permettant la modification d'un médecin de la base de données
-     * grâce a l'appel de la méthode update contenue dans la classe
-     * MedecinDAO
+     * grâce a l'appel de la méthode update contenue dans la classe MedecinDAO
      */
     public void modMed() {
         System.out.print("ID du médecin à modifier? ");
@@ -395,10 +399,10 @@ public class PharmacieDAO {
             System.out.println("erreur " + e);
         }
     }
+
     /**
      * méthode permettant la suppression d'un médecin de la base de données
-     * grâce a l'appel de la méthode delete contenue dans la classe
-     * MedecinDAO
+     * grâce a l'appel de la méthode delete contenue dans la classe MedecinDAO
      */
     public void suppressionMed() {
         int choix = 1;
@@ -419,8 +423,9 @@ public class PharmacieDAO {
             }
         } while (choix != 0);
     }
+
     /**
-     *  méthode permettant la recherche d'un patient de la base de données sur
+     * méthode permettant la recherche d'un patient de la base de données sur
      * base de l'identifiant grâce a l'appel de la méthode read contenue dans la
      * classe PatientDAO
      */
@@ -434,10 +439,10 @@ public class PharmacieDAO {
             System.out.println("erreur: " + e);
         }
     }
+
     /**
-     * méthode permettant l'ajout d'un nouveau patient dans la base de
-     * données grâce a l'appel de la méthode create contenue dans la classe
-     * PatientDAO
+     * méthode permettant l'ajout d'un nouveau patient dans la base de données
+     * grâce a l'appel de la méthode create contenue dans la classe PatientDAO
      */
     public void creaPat() {
         System.out.print("Nom? ");
@@ -454,10 +459,10 @@ public class PharmacieDAO {
             System.out.println("erreur :" + e);
         }
     }
+
     /**
      * * méthode permettant la modification d'un patient de la base de données
-     * grâce a l'appel de la méthode update contenue dans la classe
-     * PatientDAO
+     * grâce a l'appel de la méthode update contenue dans la classe PatientDAO
      */
     public void modifPat() {
         System.out.print("ID du patient à modifier? ");
@@ -487,21 +492,21 @@ public class PharmacieDAO {
                 default:
                     System.out.println("mauvais numéro...");
             }
-             try {
+            try {
                 patdao.update(patactu);
             } catch (SQLException e) {
                 System.out.println("erreur " + e);
             }
         } catch (SQLException e) {
-           System.out.println("erreur " + e);
+            System.out.println("erreur " + e);
         }
     }
+
     /**
      * méthode permettant la suppression d'un patient de la base de données
-     * grâce a l'appel de la méthode delete contenue dans la classe
-     * PatientDAO
+     * grâce a l'appel de la méthode delete contenue dans la classe PatientDAO
      */
-    public void supprPat(){
+    public void supprPat() {
         int choix = 1;
         do {
             System.out.print("ID du patient à supprimer? ");
@@ -520,7 +525,57 @@ public class PharmacieDAO {
             }
         } while (choix != 0);
     }
+
     public static void main(String[] args) throws SQLException {
+        /*test des méthode d'affichage des prescription lié à un médecin ou un patient
+        Scanner sc2 = new Scanner(System.in);
+        MedecinDAO mededao = null;
+        PatientDAO patdao = null;
+        Prescription presactu = null;
+        PrescriptionDAO presdao = null;
+         Connection dbConnect = DBConnection.getConnection();
+        if (dbConnect == null) {
+            System.out.println("connection invalide");
+            System.exit(1);
+        }
+        mededao = new MedecinDAO();
+         mededao.setConnection(dbConnect);
+        presdao = new PrescriptionDAO();
+        presdao.setConnection(dbConnect);
+        patdao = new PatientDAO();
+        patdao.setConnection(dbConnect);
+       
+       
+        //TestSearchPat
+        System.out.print("Id du patient? ");
+        int rech = sc2.nextInt();
+        List idTab;
+        idTab = patdao.search(rech);
+        if ((int) idTab.get(0) != 0) {
+            for (int i = 0; i < idTab.size(); i++) {
+                try {
+                    presactu = presdao.read((int) idTab.get(i));
+                    System.out.println(presactu);
+                } catch (SQLException e) {
+                   System.out.println("erreur " + e);
+                }
+            }
+        }
+        //TestSearchMed
+        System.out.print("Id du Medecin? ");
+        int rech2 = sc2.nextInt();
+        List idTab2;
+        idTab2 = mededao.search(rech2);
+        if ((int) idTab2.get(0) != 0) {
+            for (int i = 0; i < idTab2.size(); i++) {
+                try {
+                    presactu = presdao.read((int) idTab2.get(i));
+                    System.out.println(presactu);
+                } catch (SQLException e) {
+                   System.out.println("erreur " + e);
+                }
+            }
+        }*/
         PharmacieDAO gstn = new PharmacieDAO();
         gstn.gestion();
     }

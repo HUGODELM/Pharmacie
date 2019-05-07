@@ -46,6 +46,7 @@ public class RechMed extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         IdMed = new javax.swing.JLabel();
         NomMed = new javax.swing.JLabel();
         PreMed = new javax.swing.JLabel();
@@ -60,8 +61,11 @@ public class RechMed extends javax.swing.JPanel {
         btRetour = new javax.swing.JButton();
         BtMajMed = new javax.swing.JButton();
         BtDelMed = new javax.swing.JButton();
+        AffPresMed = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
+
+        jButton1.setText("jButton1");
 
         IdMed.setText("identifiant");
 
@@ -107,6 +111,13 @@ public class RechMed extends javax.swing.JPanel {
             }
         });
 
+        AffPresMed.setText("Afficher prescription");
+        AffPresMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AffPresMedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,14 +140,16 @@ public class RechMed extends javax.swing.JPanel {
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btRechMed)
-                .addGap(18, 18, 18)
-                .addComponent(BtMajMed)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(BtDelMed)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btRechMed)
+                    .addComponent(AffPresMed))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtDelMed)
+                    .addComponent(BtMajMed))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(btRetour)
-                .addContainerGap())
+                .addGap(84, 84, 84))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,13 +174,20 @@ public class RechMed extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TelMed)
                     .addComponent(txtTelMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btRechMed)
-                    .addComponent(btRetour)
-                    .addComponent(BtMajMed)
-                    .addComponent(BtDelMed))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btRechMed)
+                            .addComponent(BtMajMed))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AffPresMed)
+                            .addComponent(BtDelMed)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btRetour)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -239,8 +259,13 @@ public class RechMed extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BtDelMedActionPerformed
 
+    private void AffPresMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AffPresMedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AffPresMedActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AffPresMed;
     private javax.swing.JButton BtDelMed;
     private javax.swing.JButton BtMajMed;
     private javax.swing.JLabel IdMed;
@@ -250,6 +275,7 @@ public class RechMed extends javax.swing.JPanel {
     private javax.swing.JLabel TelMed;
     private javax.swing.JButton btRechMed;
     private javax.swing.JButton btRetour;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtIdMed;
     private javax.swing.JTextField txtMatMed;

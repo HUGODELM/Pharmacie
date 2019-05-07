@@ -10,6 +10,8 @@ import Pharmacie.metier.Prescription;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -133,6 +135,36 @@ public class PatientDAO extends DAO<Patient> {
                 }
             }
         }
+    }
+    /**
+     * méthode permettant de retourner toute les prescription liée à un patient
+     * @param rech identifiant du patient
+     * @return arraylist contenant tous les id des prescriptions trouvées
+     * @throws SQLException 
+     */
+     public List search(int rech) throws SQLException {
+        String query1 = "SELECT * FROM API_PRESCRIPTION WHERE IDPAT = ?";
+        List<Integer> idTab=new ArrayList();
+        boolean trouver = false;
+        try (PreparedStatement pstm = dbConnect.prepareStatement(query1)) {
+            pstm.setInt(1, rech );
+            try (ResultSet rs = pstm.executeQuery()) {
+                while (rs.next()) {
+                    trouver = true;
+                    int id = rs.getInt("IDPRES");
+                    idTab.add(id);
+                    
+                }
+            }
+        }
+        catch(SQLException e){
+            System.out.println("erreur "+e);
+        }
+        if(!trouver){
+            System.out.println("Aucune prescription trouvée...");
+            idTab.add(0);
+        }
+            return idTab;
     }
 
 }

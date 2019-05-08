@@ -6,9 +6,7 @@
 package Pharmacie.Graphique;
 
 import Pharmacie.DAO.PatientDAO;
-import Pharmacie.DAO.PrescriptionDAO;
 import Pharmacie.metier.Patient;
-import Pharmacie.metier.Prescription;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +14,6 @@ import javax.swing.JOptionPane;
  * @author hugo.delmarche
  */
 public class RechPat extends javax.swing.JPanel {
-    Prescription pres;
-    PrescriptionDAO presdao=null;
     PatientDAO patdao = null;
     Patient p;
 
@@ -34,12 +30,8 @@ public class RechPat extends javax.swing.JPanel {
 
     }
     
-    public void setPresdao(PrescriptionDAO presdao) {
-        this.presdao = presdao;
-    }
-    
-    public void setMeddao(PatientDAO presdao) {
-        this.patdao = presdao;
+    public void setPatdao(PatientDAO patdao) {
+        this.patdao = patdao;
     }
 
     /**
@@ -64,7 +56,6 @@ public class RechPat extends javax.swing.JPanel {
         btRetour = new javax.swing.JButton();
         BtMajPat = new javax.swing.JButton();
         BtDelPat = new javax.swing.JButton();
-        AffPresPat = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -104,13 +95,6 @@ public class RechPat extends javax.swing.JPanel {
             }
         });
 
-        AffPresPat.setText("Afficher prescription");
-        AffPresPat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AffPresPatActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,22 +110,24 @@ public class RechPat extends javax.swing.JPanel {
                             .addComponent(TelPat, javax.swing.GroupLayout.PREFERRED_SIZE, 57, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(AffPresPat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btRechPat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btRechPat, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(BtMajPat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BtDelPat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtMajPat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btRetour)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtIdPat)
-                        .addComponent(txtNomPat)
-                        .addComponent(txtPrePat)
-                        .addComponent(txtTelPat, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
-                .addGap(71, 71, 71))
+                            .addComponent(txtIdPat)
+                            .addComponent(txtNomPat)
+                            .addComponent(txtPrePat)
+                            .addComponent(txtTelPat, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                        .addGap(71, 71, 71))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(BtDelPat)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addComponent(btRetour)
+                        .addGap(27, 27, 27))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,20 +148,13 @@ public class RechPat extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TelPat)
                     .addComponent(txtTelPat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btRechPat)
-                            .addComponent(BtMajPat))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtDelPat)
-                            .addComponent(AffPresPat)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(btRetour)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btRechPat)
+                    .addComponent(BtMajPat)
+                    .addComponent(btRetour)
+                    .addComponent(BtDelPat))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -238,13 +217,8 @@ public class RechPat extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BtDelPatActionPerformed
 
-    private void AffPresPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AffPresPatActionPerformed
-
-    }//GEN-LAST:event_AffPresPatActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AffPresPat;
     private javax.swing.JButton BtDelPat;
     private javax.swing.JButton BtMajPat;
     private javax.swing.JLabel IdPat;

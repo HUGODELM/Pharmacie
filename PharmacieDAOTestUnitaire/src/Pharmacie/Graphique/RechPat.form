@@ -36,28 +36,30 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="AffPresPat" max="32767" attributes="0"/>
-                          <Component id="btRechPat" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btRechPat" min="-2" pref="136" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="BtMajPat" min="-2" pref="99" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="BtDelPat" max="32767" attributes="0"/>
-                          <Component id="BtMajPat" max="32767" attributes="0"/>
+                          <Component id="txtIdPat" max="32767" attributes="0"/>
+                          <Component id="txtNomPat" max="32767" attributes="0"/>
+                          <Component id="txtPrePat" max="32767" attributes="0"/>
+                          <Component id="txtTelPat" pref="98" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="BtDelPat" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                      <Component id="btRetour" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="86" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btRetour" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtIdPat" max="32767" attributes="0"/>
-                      <Component id="txtNomPat" max="32767" attributes="0"/>
-                      <Component id="txtPrePat" max="32767" attributes="0"/>
-                      <Component id="txtTelPat" pref="98" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,25 +86,14 @@
                   <Component id="TelPat" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTelPat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btRechPat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtMajPat" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BtDelPat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="AffPresPat" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="btRetour" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btRechPat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtMajPat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btRetour" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtDelPat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -166,14 +157,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtDelPatActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="AffPresPat">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Afficher prescription"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AffPresPatActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

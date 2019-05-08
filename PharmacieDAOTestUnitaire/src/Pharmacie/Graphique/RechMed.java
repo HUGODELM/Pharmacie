@@ -61,7 +61,6 @@ public class RechMed extends javax.swing.JPanel {
         btRetour = new javax.swing.JButton();
         BtMajMed = new javax.swing.JButton();
         BtDelMed = new javax.swing.JButton();
-        AffPresMed = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -111,13 +110,6 @@ public class RechMed extends javax.swing.JPanel {
             }
         });
 
-        AffPresMed.setText("Afficher prescription");
-        AffPresMed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AffPresMedActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,16 +132,14 @@ public class RechMed extends javax.swing.JPanel {
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btRechMed)
-                    .addComponent(AffPresMed))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtDelMed)
-                    .addComponent(BtMajMed))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(btRechMed)
+                .addGap(60, 60, 60)
+                .addComponent(BtMajMed)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(BtDelMed)
+                .addGap(18, 18, 18)
                 .addComponent(btRetour)
-                .addGap(84, 84, 84))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,20 +164,13 @@ public class RechMed extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TelMed)
                     .addComponent(txtTelMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btRechMed)
-                            .addComponent(BtMajMed))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AffPresMed)
-                            .addComponent(BtDelMed)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(btRetour)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btRechMed)
+                    .addComponent(BtMajMed)
+                    .addComponent(btRetour)
+                    .addComponent(BtDelMed))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -259,13 +242,8 @@ public class RechMed extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BtDelMedActionPerformed
 
-    private void AffPresMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AffPresMedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AffPresMedActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AffPresMed;
     private javax.swing.JButton BtDelMed;
     private javax.swing.JButton BtMajMed;
     private javax.swing.JLabel IdMed;

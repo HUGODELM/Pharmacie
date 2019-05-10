@@ -217,7 +217,7 @@ public class RechPres extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERREURSQL", JOptionPane.ERROR_MESSAGE);
             } 
         catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "ERREURPASSQL", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "erruer: "+e.getMessage(), "ERREURPASSQL", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_BtDelPresActionPerformed

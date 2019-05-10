@@ -100,7 +100,16 @@ public class PrescriptionDAO extends DAO<Prescription> {
      */
     @Override
     public void delete(Prescription obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String req = "DELETE FROM API_PRESCRIPTION WHERE IDPRES= ?";
+        try (PreparedStatement pstm = dbConnect.prepareStatement(req)) {
+
+            pstm.setInt(1, obj.getIdpres());
+            int n = pstm.executeUpdate();
+            if (n == 0) {
+                throw new SQLException("aucune ligne client effacée");
+            }
+
+        }
     }
 
 }

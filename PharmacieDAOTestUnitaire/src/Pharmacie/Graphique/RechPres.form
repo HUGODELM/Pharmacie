@@ -33,7 +33,7 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txtIdPat" max="32767" attributes="0"/>
+                  <Component id="txtIdPres" max="32767" attributes="0"/>
                   <Component id="txtDatPres" max="32767" attributes="0"/>
                   <Component id="txtIdMedPres" max="32767" attributes="0"/>
                   <Component id="txtIdPatPres" pref="98" max="32767" attributes="0"/>
@@ -58,7 +58,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtIdPat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdPres" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="IdPat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -109,7 +109,7 @@
         <Property name="text" type="java.lang.String" value="Identifiant Patient"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtIdPat">
+    <Component class="javax.swing.JTextField" name="txtIdPres">
     </Component>
     <Component class="javax.swing.JTextField" name="txtDatPres">
     </Component>

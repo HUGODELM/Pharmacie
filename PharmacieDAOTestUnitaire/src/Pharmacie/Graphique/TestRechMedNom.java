@@ -33,8 +33,8 @@ public class TestRechMedNom extends javax.swing.JFrame {
         MedecinDAO meddao = new MedecinDAO();
         meddao.setConnection(dbConnect);
         presdao.setConnection(dbConnect);
-        rechMedNom1.setMeddao(meddao);
-        rechMedNom1.setPresdao(presdao);
+        rechMedNom2.setMeddao(meddao);
+        rechMedNom2.setPresdao(presdao);
     }
 
     /**
@@ -47,7 +47,7 @@ public class TestRechMedNom extends javax.swing.JFrame {
     private void initComponents() {
 
         rechPatNom1 = new Pharmacie.Graphique.RechPatNom();
-        rechMedNom1 = new Pharmacie.Graphique.RechMedNom();
+        rechMedNom2 = new Pharmacie.Graphique.RechMedNom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,15 +56,15 @@ public class TestRechMedNom extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(rechMedNom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(rechMedNom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rechMedNom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(rechMedNom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -109,7 +109,7 @@ public class TestRechMedNom extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Pharmacie.Graphique.RechMedNom rechMedNom1;
+    private Pharmacie.Graphique.RechMedNom rechMedNom2;
     private Pharmacie.Graphique.RechPatNom rechPatNom1;
     // End of variables declaration//GEN-END:variables
 }

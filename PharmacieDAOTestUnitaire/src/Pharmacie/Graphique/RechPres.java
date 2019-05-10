@@ -7,6 +7,7 @@ package Pharmacie.Graphique;
 
 import Pharmacie.DAO.PrescriptionDAO;
 import Pharmacie.metier.Prescription;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,7 +32,7 @@ public class RechPres extends javax.swing.JPanel {
 
     }
 
-    public void setMeddao(PrescriptionDAO presdao) {
+    public void setPresdao(PrescriptionDAO presdao) {
         this.presdao = presdao;
     }
 
@@ -49,7 +50,7 @@ public class RechPres extends javax.swing.JPanel {
         DatePres = new javax.swing.JLabel();
         IdMedPres = new javax.swing.JLabel();
         IdPatPres = new javax.swing.JLabel();
-        txtIdPat = new javax.swing.JTextField();
+        txtIdPres = new javax.swing.JTextField();
         txtDatPres = new javax.swing.JTextField();
         txtIdMedPres = new javax.swing.JTextField();
         txtIdPatPres = new javax.swing.JTextField();
@@ -109,7 +110,7 @@ public class RechPres extends javax.swing.JPanel {
                     .addComponent(IdPatPres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtIdPat)
+                    .addComponent(txtIdPres)
                     .addComponent(txtDatPres)
                     .addComponent(txtIdMedPres)
                     .addComponent(txtIdPatPres, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
@@ -130,7 +131,7 @@ public class RechPres extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIdPat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdPres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IdPat))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -156,7 +157,7 @@ public class RechPres extends javax.swing.JPanel {
 
     private void btRechPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRechPresActionPerformed
         try {
-            int id = Integer.parseInt(txtIdPat.getText());
+            int id = Integer.parseInt(txtIdPres.getText());
             p = presdao.read(id);
             txtDatPres.setText(p.getDate());
             txtIdMedPres.setText(Integer.toString(p.getIdmed()));
@@ -174,25 +175,30 @@ public class RechPres extends javax.swing.JPanel {
     }//GEN-LAST:event_btRetourActionPerformed
 
     private void BtMajPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtMajPresActionPerformed
-        if (txtIdPat.isEditable()) {
-            txtIdPat.setEditable(false);
+        if (txtIdPres.isEditable()) {
+            txtIdPres.setEditable(false);
             txtDatPres.setEditable(true);
             txtIdMedPres.setEditable(true);
             txtIdPatPres.setEditable(true);
             JOptionPane.showMessageDialog(this, "Modifier les champs que vous souhaitez mettre à jour puis cliquer à nouveau sur Mise à jour", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
         } else {
             try {
+                p.setIdpres(Integer.parseInt(txtIdPres.getText()));
                 p.setDate(txtDatPres.getText());
                 p.setIdmed(Integer.parseInt(txtIdMedPres.getText()));
                 p.setIdpat(Integer.parseInt(txtIdPatPres.getText()));
-                presdao.update(p);
+                System.out.println(p);
+                p=presdao.update(p);
                 JOptionPane.showMessageDialog(this, "Prescription mise à jour", "succès", JOptionPane.INFORMATION_MESSAGE);
-                txtIdPat.setEditable(true);
+                txtIdPres.setEditable(true);
                 txtDatPres.setEditable(false);
                 txtIdMedPres.setEditable(false);
                 txtIdPatPres.setEditable(false);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "ERREUR", JOptionPane.ERROR_MESSAGE);
+            }catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERREURSQL", JOptionPane.ERROR_MESSAGE);
+            } 
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "ERREURPASSQL", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -201,14 +207,17 @@ public class RechPres extends javax.swing.JPanel {
     private void BtDelPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDelPresActionPerformed
         try {
             presdao.delete(p);
-            JOptionPane.showMessageDialog(this, "Patient supprimer", "succès", JOptionPane.INFORMATION_MESSAGE);
-            txtIdPat.setText(" ");
+            JOptionPane.showMessageDialog(this, "Prescription supprimer", "succès", JOptionPane.INFORMATION_MESSAGE);
+            txtIdPres.setText(" ");
             txtDatPres.setText(" ");
             txtIdMedPres.setText(" ");
             txtIdPatPres.setText(" ");
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "ERREUR", JOptionPane.ERROR_MESSAGE);
+        }catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "ERREURSQL", JOptionPane.ERROR_MESSAGE);
+            } 
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "ERREURPASSQL", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_BtDelPresActionPerformed
@@ -226,7 +235,7 @@ public class RechPres extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtDatPres;
     private javax.swing.JTextField txtIdMedPres;
-    private javax.swing.JTextField txtIdPat;
     private javax.swing.JTextField txtIdPatPres;
+    private javax.swing.JTextField txtIdPres;
     // End of variables declaration//GEN-END:variables
 }

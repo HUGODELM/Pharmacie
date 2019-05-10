@@ -150,6 +150,9 @@ public class RechPatNom extends javax.swing.JPanel {
                     dft1.addRow(v);
                 }
             }
+             else{
+                JOptionPane.showMessageDialog(this, "Patient inconnu", "", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERREURSQL", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {

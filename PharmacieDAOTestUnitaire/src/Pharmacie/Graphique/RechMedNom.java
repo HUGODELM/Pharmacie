@@ -62,8 +62,8 @@ public class RechMedNom extends javax.swing.JPanel {
         PreMed = new javax.swing.JLabel();
         TelMed = new javax.swing.JLabel();
         IdMed = new javax.swing.JLabel();
-        BtRechNomMed = new javax.swing.JButton();
         MatMed = new javax.swing.JLabel();
+        BtRechMedNom = new javax.swing.JButton();
 
         TabPres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,14 +83,14 @@ public class RechMedNom extends javax.swing.JPanel {
 
         IdMed.setText("Identifiant");
 
-        BtRechNomMed.setText("Recherche");
-        BtRechNomMed.addActionListener(new java.awt.event.ActionListener() {
+        MatMed.setText("Matricule");
+
+        BtRechMedNom.setText("Recherche");
+        BtRechMedNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtRechNomMedActionPerformed(evt);
+                BtRechMedNomActionPerformed(evt);
             }
         });
-
-        MatMed.setText("Matricule");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -98,9 +98,6 @@ public class RechMedNom extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(BtRechNomMed))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(15, 15, 15)
@@ -115,7 +112,10 @@ public class RechMedNom extends javax.swing.JPanel {
                             .addComponent(IdMed))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(BtRechMedNom)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,13 +131,13 @@ public class RechMedNom extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BtRechNomMed)
+                .addComponent(BtRechMedNom)
                 .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtRechNomMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRechNomMedActionPerformed
-        String nom = TxtNomMed.getText();
+    private void BtRechMedNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRechMedNomActionPerformed
+           String nom = TxtNomMed.getText();
         List idTab;
         try {
             idTab = meddao.search(nom);
@@ -158,16 +158,19 @@ public class RechMedNom extends javax.swing.JPanel {
                     dft1.addRow(v);
                 }
             }
+            else{
+                JOptionPane.showMessageDialog(this, "Médecin inconnu", "", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERREURSQL", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "erreur: "+e.getMessage(), "ERREURPasSQL", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_BtRechNomMedActionPerformed
+    }//GEN-LAST:event_BtRechMedNomActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtRechNomMed;
+    private javax.swing.JButton BtRechMedNom;
     private javax.swing.JLabel IdMed;
     private javax.swing.JLabel MatMed;
     private javax.swing.JLabel PreMed;

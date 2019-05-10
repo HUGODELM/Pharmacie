@@ -3,36 +3,50 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Pharmacie.Graphique;
 
 import Pharmacie.DAO.MedecinDAO;
+import Pharmacie.DAO.PatientDAO;
+import Pharmacie.DAO.PrescriptionDAO;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import myconnections.DBConnection;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 public class GestionPharma extends javax.swing.JFrame {
-    CardLayout cardl;
-    
-    
+
+    static MenuPrinc mp = new MenuPrinc();
+    static GestionPharma gp = new GestionPharma();
+    static CardLayout cardl;
+
     /**
      * Creates new form GestionPharma
      */
     public GestionPharma() {
         initComponents();
-        cardl=(CardLayout)this.getContentPane().getLayout();
+        cardl = (CardLayout) this.getContentPane().getLayout();
         Connection dbConnect = DBConnection.getConnection();
         if (dbConnect == null) {
             System.out.println("connection invalide");
-            JOptionPane.showMessageDialog(this,"connexion invalide","ERREUR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "connexion invalide", "ERREUR", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         MedecinDAO medecinDAO = new MedecinDAO();
         medecinDAO.setConnection(dbConnect);
-        creaMed21.setMeddao(medecinDAO);
+        PrescriptionDAO presdao = new PrescriptionDAO();
+        presdao.setConnection(dbConnect);
+        PatientDAO patdao = new PatientDAO();
+        patdao.setConnection(dbConnect);
+        creaMed23.setMeddao(medecinDAO);
+        rechMed1.setMeddao(medecinDAO);
+        rechMedNom1.setMeddao(medecinDAO);
+        rechMedNom1.setPresdao(presdao);
+        creaPat1.setPatdao(patdao);
+        rechPat1.setPatdao(patdao);
+        rechPatNom1.setPatdao(patdao);
+        rechPatNom1.setPresdao(presdao);
+        rechPres1.setPresdao(presdao);
+        creaPres1.setPresdao(presdao);
     }
 
     /**
@@ -44,16 +58,41 @@ public class GestionPharma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        creaMed21 = new Pharmacie.Graphique.CreaMed2();
+        creaMed23 = new Pharmacie.Graphique.CreaMed2();
+        menuPrinc1 = new Pharmacie.Graphique.MenuPrinc();
+        rechMed1 = new Pharmacie.Graphique.RechMed();
+        rechMedNom1 = new Pharmacie.Graphique.RechMedNom();
+        creaPat1 = new Pharmacie.Graphique.CreaPat();
+        creaPres1 = new Pharmacie.Graphique.CreaPres();
+        rechPat1 = new Pharmacie.Graphique.RechPat();
+        rechPatNom1 = new Pharmacie.Graphique.RechPatNom();
+        rechPres1 = new Pharmacie.Graphique.RechPres();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuMed = new javax.swing.JMenu();
         MenuMedCrea = new javax.swing.JMenuItem();
         RechMed = new javax.swing.JMenuItem();
+        MenuRechNom = new javax.swing.JMenuItem();
         MenuPat = new javax.swing.JMenu();
+        MenuCreaPat = new javax.swing.JMenuItem();
+        MenuRechPat = new javax.swing.JMenuItem();
+        MenuRechNomPat = new javax.swing.JMenuItem();
         MenuPres = new javax.swing.JMenu();
+        MenuCreaPres = new javax.swing.JMenuItem();
+        MenuRechPres = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
+        getContentPane().add(creaMed23, "cardCreaMed");
+        getContentPane().add(menuPrinc1, "card3");
+        getContentPane().add(rechMed1, "card4");
+        getContentPane().add(rechMedNom1, "cardRechMedNom");
+        getContentPane().add(creaPat1, "cardCreaPat");
+        getContentPane().add(creaPres1, "cardCreaPres");
+        getContentPane().add(rechPat1, "cardRechPat");
+        rechPat1.getAccessibleContext().setAccessibleDescription("");
+
+        getContentPane().add(rechPatNom1, "cardRechNomPat");
+        getContentPane().add(rechPres1, "cardRechPres");
 
         MenuMed.setText("Médecin");
 
@@ -73,12 +112,62 @@ public class GestionPharma extends javax.swing.JFrame {
         });
         MenuMed.add(RechMed);
 
+        MenuRechNom.setText("Recherche Nom");
+        MenuRechNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRechNomActionPerformed(evt);
+            }
+        });
+        MenuMed.add(MenuRechNom);
+
         jMenuBar1.add(MenuMed);
 
         MenuPat.setText("Patient");
+
+        MenuCreaPat.setText("Création");
+        MenuCreaPat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCreaPatActionPerformed(evt);
+            }
+        });
+        MenuPat.add(MenuCreaPat);
+
+        MenuRechPat.setText("Recherche");
+        MenuRechPat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRechPatActionPerformed(evt);
+            }
+        });
+        MenuPat.add(MenuRechPat);
+
+        MenuRechNomPat.setText("Recherche Nom");
+        MenuRechNomPat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRechNomPatActionPerformed(evt);
+            }
+        });
+        MenuPat.add(MenuRechNomPat);
+
         jMenuBar1.add(MenuPat);
 
         MenuPres.setText("Prescription");
+
+        MenuCreaPres.setText("Création");
+        MenuCreaPres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCreaPresActionPerformed(evt);
+            }
+        });
+        MenuPres.add(MenuCreaPres);
+
+        MenuRechPres.setText("Recherche");
+        MenuRechPres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuRechPresActionPerformed(evt);
+            }
+        });
+        MenuPres.add(MenuRechPres);
+
         jMenuBar1.add(MenuPres);
 
         setJMenuBar(jMenuBar1);
@@ -86,19 +175,42 @@ public class GestionPharma extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void RechMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMedActionPerformed
+        cardl.show(this.getContentPane(), "card4");
+    }//GEN-LAST:event_RechMedActionPerformed
+
     private void MenuMedCreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMedCreaActionPerformed
         cardl.show(this.getContentPane(), "cardCreaMed");
     }//GEN-LAST:event_MenuMedCreaActionPerformed
 
-    private void RechMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMedActionPerformed
-        cardl.show(this.getContentPane(), "cardRechMed");
-    }//GEN-LAST:event_RechMedActionPerformed
+    private void MenuRechNomPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechNomPatActionPerformed
+        cardl.show(this.getContentPane(), "cardRechNomPat");
+    }//GEN-LAST:event_MenuRechNomPatActionPerformed
+
+    private void MenuCreaPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreaPresActionPerformed
+        cardl.show(this.getContentPane(), "cardCreaPres");    }//GEN-LAST:event_MenuCreaPresActionPerformed
+
+    private void MenuRechNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechNomActionPerformed
+        cardl.show(this.getContentPane(), "cardRechMedNom");
+    }//GEN-LAST:event_MenuRechNomActionPerformed
+
+    private void MenuCreaPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreaPatActionPerformed
+        cardl.show(this.getContentPane(), "cardCreaPat");
+    }//GEN-LAST:event_MenuCreaPatActionPerformed
+
+    private void MenuRechPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechPatActionPerformed
+        cardl.show(this.getContentPane(), "cardRechPat");
+    }//GEN-LAST:event_MenuRechPatActionPerformed
+
+    private void MenuRechPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechPresActionPerformed
+        cardl.show(this.getContentPane(), "cardRechPres");
+    }//GEN-LAST:event_MenuRechPresActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -125,18 +237,34 @@ public class GestionPharma extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionPharma().setVisible(true);
+                gp.setVisible(true);
+                cardl.show(gp.getContentPane(), "card3");
+                gp.setSize(520, 460);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuCreaPat;
+    private javax.swing.JMenuItem MenuCreaPres;
     private javax.swing.JMenu MenuMed;
     private javax.swing.JMenuItem MenuMedCrea;
     private javax.swing.JMenu MenuPat;
     private javax.swing.JMenu MenuPres;
+    private javax.swing.JMenuItem MenuRechNom;
+    private javax.swing.JMenuItem MenuRechNomPat;
+    private javax.swing.JMenuItem MenuRechPat;
+    private javax.swing.JMenuItem MenuRechPres;
     private javax.swing.JMenuItem RechMed;
-    private Pharmacie.Graphique.CreaMed2 creaMed21;
+    private Pharmacie.Graphique.CreaMed2 creaMed23;
+    private Pharmacie.Graphique.CreaPat creaPat1;
+    private Pharmacie.Graphique.CreaPres creaPres1;
     private javax.swing.JMenuBar jMenuBar1;
+    private Pharmacie.Graphique.MenuPrinc menuPrinc1;
+    private Pharmacie.Graphique.RechMed rechMed1;
+    private Pharmacie.Graphique.RechMedNom rechMedNom1;
+    private Pharmacie.Graphique.RechPat rechPat1;
+    private Pharmacie.Graphique.RechPatNom rechPatNom1;
+    private Pharmacie.Graphique.RechPres rechPres1;
     // End of variables declaration//GEN-END:variables
 }

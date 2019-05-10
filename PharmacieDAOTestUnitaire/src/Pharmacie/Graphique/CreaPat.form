@@ -27,24 +27,31 @@
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btCreaPat" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btRetour" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="IdMed" max="32767" attributes="0"/>
-                          <Component id="NomMed" max="32767" attributes="0"/>
-                          <Component id="PreMed" max="32767" attributes="0"/>
-                          <Component id="TelPat" pref="57" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="IdMed" pref="57" max="32767" attributes="0"/>
+                                  <Component id="NomMed" max="32767" attributes="0"/>
+                                  <Component id="PreMed" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="236" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="TelPat" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="130" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtIdPat" max="32767" attributes="0"/>
                           <Component id="txtNomPat" max="32767" attributes="0"/>
                           <Component id="txtPrePat" max="32767" attributes="0"/>
                           <Component id="txtTelPat" pref="98" max="32767" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="btCreaPat" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btRetour" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
@@ -54,32 +61,32 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="IdMed" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtIdPat" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="IdMed" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdPat" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtNomPat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NomMed" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="NomMed" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNomPat" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="PreMed" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPrePat" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="PreMed" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPrePat" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtTelPat" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TelPat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btCreaPat" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btRetour" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btCreaPat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

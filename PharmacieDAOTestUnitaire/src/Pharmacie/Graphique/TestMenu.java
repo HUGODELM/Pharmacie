@@ -5,31 +5,17 @@
  */
 package Pharmacie.Graphique;
 
-import Pharmacie.DAO.PrescriptionDAO;
-import java.sql.Connection;
-import javax.swing.JOptionPane;
-import myconnections.DBConnection;
-
 /**
  *
  * @author huggy
  */
-public class TestRechPres extends javax.swing.JFrame {
-    public static TestRechPres tp= new TestRechPres();
-    /**
-     * Creates new form TestRechPres
-     */
-    public TestRechPres() {
-        initComponents();
-        Connection dbConnect = DBConnection.getConnection();
-        if (dbConnect == null) {
-            System.out.println("connection invalide");
-            JOptionPane.showMessageDialog(this, "connexion invalide", "ERREUR", JOptionPane.ERROR_MESSAGE);
-        }
+public class TestMenu extends javax.swing.JFrame {
 
-        PrescriptionDAO patdao= new PrescriptionDAO();
-        patdao.setConnection(dbConnect);
-        rechPres2.setPresdao(patdao);
+    /**
+     * Creates new form TestMenu
+     */
+    public TestMenu() {
+        initComponents();
     }
 
     /**
@@ -41,25 +27,17 @@ public class TestRechPres extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rechPres2 = new Pharmacie.Graphique.RechPres();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(rechPres2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+            .addGap(0, 1006, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(rechPres2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+            .addGap(0, 857, Short.MAX_VALUE)
         );
 
         pack();
@@ -82,27 +60,24 @@ public class TestRechPres extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TestRechPres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TestMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TestRechPres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TestMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TestRechPres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TestMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TestRechPres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TestMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                tp.setVisible(true);
-                tp.setLocationRelativeTo(null);
-                tp.setSize(600, 400);
+                new TestMenu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Pharmacie.Graphique.RechPres rechPres2;
     // End of variables declaration//GEN-END:variables
 }

@@ -51,13 +51,13 @@ public class RechPres extends javax.swing.JPanel {
         IdMedPres = new javax.swing.JLabel();
         IdPatPres = new javax.swing.JLabel();
         txtIdPres = new javax.swing.JTextField();
-        txtDatPres = new javax.swing.JTextField();
         txtIdMedPres = new javax.swing.JTextField();
         txtIdPatPres = new javax.swing.JTextField();
         btRechPres = new javax.swing.JButton();
         btRetour = new javax.swing.JButton();
         BtMajPres = new javax.swing.JButton();
         BtDelPres = new javax.swing.JButton();
+        txtDatPres = new javax.swing.JFormattedTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -97,6 +97,12 @@ public class RechPres extends javax.swing.JPanel {
             }
         });
 
+        txtDatPres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDatPresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,10 +116,10 @@ public class RechPres extends javax.swing.JPanel {
                     .addComponent(IdPatPres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtIdPres)
-                    .addComponent(txtDatPres)
+                    .addComponent(txtIdPres, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                     .addComponent(txtIdMedPres)
-                    .addComponent(txtIdPatPres, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                    .addComponent(txtIdPatPres)
+                    .addComponent(txtDatPres))
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -137,7 +143,7 @@ public class RechPres extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DatePres)
                     .addComponent(txtDatPres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(IdMedPres)
                     .addComponent(txtIdMedPres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,7 +157,7 @@ public class RechPres extends javax.swing.JPanel {
                     .addComponent(btRetour)
                     .addComponent(BtMajPres)
                     .addComponent(BtDelPres))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -187,7 +193,6 @@ public class RechPres extends javax.swing.JPanel {
                 p.setDate(txtDatPres.getText());
                 p.setIdmed(Integer.parseInt(txtIdMedPres.getText()));
                 p.setIdpat(Integer.parseInt(txtIdPatPres.getText()));
-                System.out.println(p);
                 p=presdao.update(p);
                 JOptionPane.showMessageDialog(this, "Prescription mise à jour", "succès", JOptionPane.INFORMATION_MESSAGE);
                 txtIdPres.setEditable(true);
@@ -198,7 +203,7 @@ public class RechPres extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "ERREURSQL", JOptionPane.ERROR_MESSAGE);
             } 
             catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "ERREURPASSQL", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "erreur: "+e.getMessage(), "ERREURPASSQL", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -222,6 +227,10 @@ public class RechPres extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BtDelPresActionPerformed
 
+    private void txtDatPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatPresActionPerformed
+        
+    }//GEN-LAST:event_txtDatPresActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtDelPres;
@@ -233,7 +242,7 @@ public class RechPres extends javax.swing.JPanel {
     private javax.swing.JButton btRechPres;
     private javax.swing.JButton btRetour;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtDatPres;
+    private javax.swing.JFormattedTextField txtDatPres;
     private javax.swing.JTextField txtIdMedPres;
     private javax.swing.JTextField txtIdPatPres;
     private javax.swing.JTextField txtIdPres;

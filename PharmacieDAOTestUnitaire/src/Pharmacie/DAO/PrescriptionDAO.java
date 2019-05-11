@@ -6,9 +6,14 @@
 package Pharmacie.DAO;
 
 import Pharmacie.metier.Prescription;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +28,7 @@ public class PrescriptionDAO extends DAO<Prescription> {
      */
     @Override
     public Prescription read(int idpres) throws SQLException {
-        String req = "SELECT * FROM API_PRESCRIPTION WHERE IDPRES=?";
+        String req = "SELECT IDPRES,IDPAT,IDMED,TO_CHAR(DATEPRESCRIPTION,'DD MM YYYY') as \"DATEPRESCRIPTION\" FROM API_PRESCRIPTION WHERE IDPRES=?";
         try (PreparedStatement pstm = dbConnect.prepareStatement(req)) {
             pstm.setInt(1, idpres);
             try (ResultSet rs = pstm.executeQuery()) {
@@ -85,7 +90,8 @@ public class PrescriptionDAO extends DAO<Prescription> {
         try (PreparedStatement pstm = dbConnect.prepareStatement(req)) {
             pstm.setInt(1, obj.getIdmed());
             pstm.setInt(2, obj.getIdpat());
-            pstm.setString(3, obj.getDate());
+            pstm.setString(3,obj.getDate());
+            pstm.setInt(4, obj.getIdpres());
             int n = pstm.executeUpdate();
             if (n == 0) {
                 throw new SQLException("aucune ligne médicament mise à jour");

@@ -33,10 +33,10 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txtIdPres" max="32767" attributes="0"/>
-                  <Component id="txtDatPres" max="32767" attributes="0"/>
+                  <Component id="txtIdPres" pref="145" max="32767" attributes="0"/>
                   <Component id="txtIdMedPres" max="32767" attributes="0"/>
-                  <Component id="txtIdPatPres" pref="98" max="32767" attributes="0"/>
+                  <Component id="txtIdPatPres" max="32767" attributes="0"/>
+                  <Component id="txtDatPres" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
           </Group>
@@ -66,7 +66,7 @@
                   <Component id="DatePres" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDatPres" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="IdMedPres" min="-2" max="-2" attributes="0"/>
                   <Component id="txtIdMedPres" min="-2" max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
                   <Component id="BtMajPres" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtDelPres" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,8 +110,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdPres">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDatPres">
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdMedPres">
     </Component>
@@ -147,6 +145,11 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtDelPresActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtDatPres">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDatPresActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

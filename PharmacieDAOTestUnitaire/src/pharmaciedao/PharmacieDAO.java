@@ -527,7 +527,22 @@ public class PharmacieDAO {
     }
 
     public static void main(String[] args) throws SQLException {
-        //test des méthode d'affichage des prescription lié à un médecin ou un patient
+        //test update d'une prescription
+        Scanner sc2 = new Scanner(System.in);
+             Prescription presactu = null;
+        PrescriptionDAO presdao;
+        Connection dbConnect = DBConnection.getConnection();
+        if (dbConnect == null) {
+            System.out.println("connection invalide");
+            System.exit(1);
+        }
+         presdao = new PrescriptionDAO();
+        presdao.setConnection(dbConnect);
+        System.out.print("id de la pres à modifier: ");
+        int id=sc2.nextInt();
+        presactu=presdao.read(id);
+        presactu=presdao.update(presactu);
+        /*test des méthode d'affichage des prescription lié à un médecin ou un patient
         Scanner sc2 = new Scanner(System.in);
         Patient patactu = null;
         MedecinDAO mededao = null;
@@ -579,7 +594,7 @@ public class PharmacieDAO {
                    System.out.println("erreur " + e);
                 }
             }
-        }
+        }*/
         PharmacieDAO gstn = new PharmacieDAO();
         gstn.gestion();
     }

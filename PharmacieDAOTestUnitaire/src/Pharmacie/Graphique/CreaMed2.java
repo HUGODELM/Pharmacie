@@ -46,9 +46,9 @@ public class CreaMed2 extends javax.swing.JPanel {
         txtPreMed = new javax.swing.JTextField();
         txtTelMed = new javax.swing.JTextField();
         btCreaMed = new javax.swing.JButton();
-        btRetour = new javax.swing.JButton();
         MatMed = new javax.swing.JLabel();
         TxtMatMed = new javax.swing.JTextField();
+        btFin = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -69,14 +69,14 @@ public class CreaMed2 extends javax.swing.JPanel {
             }
         });
 
-        btRetour.setText("Retour");
-        btRetour.addActionListener(new java.awt.event.ActionListener() {
+        MatMed.setText("Matricule");
+
+        btFin.setText("Quitter");
+        btFin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRetourActionPerformed(evt);
+                btFinActionPerformed(evt);
             }
         });
-
-        MatMed.setText("Matricule");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,8 +105,10 @@ public class CreaMed2 extends javax.swing.JPanel {
                             .addComponent(btCreaMed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btRetour, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTelMed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtTelMed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btFin)
+                                .addGap(21, 21, 21)))))
                 .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
@@ -137,8 +139,8 @@ public class CreaMed2 extends javax.swing.JPanel {
                     .addComponent(txtTelMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btRetour)
-                    .addComponent(btCreaMed))
+                    .addComponent(btCreaMed)
+                    .addComponent(btFin))
                 .addGap(55, 55, 55))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -159,9 +161,10 @@ public class CreaMed2 extends javax.swing.JPanel {
 }
     }//GEN-LAST:event_btCreaMedActionPerformed
 
-    private void btRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRetourActionPerformed
-      
-    }//GEN-LAST:event_btRetourActionPerformed
+    private void btFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinActionPerformed
+        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_btFinActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -172,7 +175,7 @@ public class CreaMed2 extends javax.swing.JPanel {
     private javax.swing.JLabel TelPat;
     private javax.swing.JTextField TxtMatMed;
     private javax.swing.JButton btCreaMed;
-    private javax.swing.JButton btRetour;
+    private javax.swing.JButton btFin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtIdMed;

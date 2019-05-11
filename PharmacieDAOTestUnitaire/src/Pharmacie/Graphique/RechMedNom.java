@@ -64,6 +64,7 @@ public class RechMedNom extends javax.swing.JPanel {
         IdMed = new javax.swing.JLabel();
         MatMed = new javax.swing.JLabel();
         BtRechMedNom = new javax.swing.JButton();
+        btFin1 = new javax.swing.JButton();
 
         TabPres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,47 +93,55 @@ public class RechMedNom extends javax.swing.JPanel {
             }
         });
 
+        btFin1.setText("Quitter");
+        btFin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFin1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(15, 15, 15)
-                            .addComponent(TxtNomMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(41, 41, 41)
-                            .addComponent(PreMed)
-                            .addGap(65, 65, 65)
-                            .addComponent(MatMed)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TelMed)
-                            .addGap(40, 40, 40)
-                            .addComponent(IdMed))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(BtRechMedNom)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(BtRechMedNom)
+                        .addGap(266, 266, 266)
+                        .addComponent(btFin1, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(TxtNomMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(37, 37, 37)
+                            .addComponent(PreMed)
+                            .addGap(69, 69, 69)
+                            .addComponent(MatMed)
+                            .addGap(56, 56, 56)
+                            .addComponent(TelMed)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                            .addComponent(IdMed))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtNomMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PreMed)
+                    .addComponent(MatMed)
                     .addComponent(TelMed)
-                    .addComponent(IdMed)
-                    .addComponent(MatMed))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IdMed))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BtRechMedNom)
-                .addGap(13, 13, 13))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtRechMedNom)
+                    .addComponent(btFin1))
+                .addGap(57, 57, 57))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -168,6 +177,11 @@ public class RechMedNom extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BtRechMedNomActionPerformed
 
+    private void btFin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFin1ActionPerformed
+        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_btFin1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtRechMedNom;
@@ -177,6 +191,7 @@ public class RechMedNom extends javax.swing.JPanel {
     private javax.swing.JTable TabPres;
     private javax.swing.JLabel TelMed;
     private javax.swing.JTextField TxtNomMed;
+    private javax.swing.JButton btFin1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

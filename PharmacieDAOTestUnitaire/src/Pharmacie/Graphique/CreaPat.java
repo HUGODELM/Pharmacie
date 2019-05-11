@@ -45,7 +45,7 @@ public class CreaPat extends javax.swing.JPanel {
         txtPrePat = new javax.swing.JTextField();
         txtTelPat = new javax.swing.JTextField();
         btCreaPat = new javax.swing.JButton();
-        btRetour = new javax.swing.JButton();
+        btFin = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -64,10 +64,10 @@ public class CreaPat extends javax.swing.JPanel {
             }
         });
 
-        btRetour.setText("Retour");
-        btRetour.addActionListener(new java.awt.event.ActionListener() {
+        btFin.setText("Quitter");
+        btFin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRetourActionPerformed(evt);
+                btFinActionPerformed(evt);
             }
         });
 
@@ -79,25 +79,24 @@ public class CreaPat extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(IdMed, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                    .addComponent(NomMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(PreMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TelPat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(218, 218, 218)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdPat)
-                            .addComponent(txtNomPat)
-                            .addComponent(txtPrePat)
-                            .addComponent(txtTelPat, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
+                            .addComponent(IdMed, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                            .addComponent(NomMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(PreMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TelPat, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                        .addGap(218, 218, 218))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btCreaPat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btRetour)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btFin)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtIdPat)
+                        .addComponent(txtNomPat)
+                        .addComponent(txtPrePat)
+                        .addComponent(txtTelPat, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
                 .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
@@ -121,8 +120,8 @@ public class CreaPat extends javax.swing.JPanel {
                     .addComponent(TelPat))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btRetour)
-                    .addComponent(btCreaPat))
+                    .addComponent(btCreaPat)
+                    .addComponent(btFin))
                 .addGap(39, 39, 39))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -142,11 +141,10 @@ public class CreaPat extends javax.swing.JPanel {
 }
     }//GEN-LAST:event_btCreaPatActionPerformed
 
-    private void btRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRetourActionPerformed
-      /*TestCreapat.tc.setContentPane(new Patient());
-        TestCreapat.tc.repaint();
-        TestCreapat.tc.revalidate();*/
-    }//GEN-LAST:event_btRetourActionPerformed
+    private void btFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinActionPerformed
+        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_btFinActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -155,7 +153,7 @@ public class CreaPat extends javax.swing.JPanel {
     private javax.swing.JLabel PreMed;
     private javax.swing.JLabel TelPat;
     private javax.swing.JButton btCreaPat;
-    private javax.swing.JButton btRetour;
+    private javax.swing.JButton btFin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtIdPat;
     private javax.swing.JTextField txtNomPat;

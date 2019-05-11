@@ -54,7 +54,7 @@ public class RechPres extends javax.swing.JPanel {
         txtIdMedPres = new javax.swing.JTextField();
         txtIdPatPres = new javax.swing.JTextField();
         btRechPres = new javax.swing.JButton();
-        btRetour = new javax.swing.JButton();
+        btFin = new javax.swing.JButton();
         BtMajPres = new javax.swing.JButton();
         BtDelPres = new javax.swing.JButton();
         txtDatPres = new javax.swing.JFormattedTextField();
@@ -76,10 +76,10 @@ public class RechPres extends javax.swing.JPanel {
             }
         });
 
-        btRetour.setText("Retour");
-        btRetour.addActionListener(new java.awt.event.ActionListener() {
+        btFin.setText("Quitter");
+        btFin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRetourActionPerformed(evt);
+                btFinActionPerformed(evt);
             }
         });
 
@@ -126,10 +126,10 @@ public class RechPres extends javax.swing.JPanel {
                 .addComponent(btRechPres)
                 .addGap(18, 18, 18)
                 .addComponent(BtMajPres)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(BtDelPres)
                 .addGap(18, 18, 18)
-                .addComponent(btRetour)
+                .addComponent(btFin)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -154,7 +154,7 @@ public class RechPres extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btRechPres)
-                    .addComponent(btRetour)
+                    .addComponent(btFin)
                     .addComponent(BtMajPres)
                     .addComponent(BtDelPres))
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -176,9 +176,10 @@ public class RechPres extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btRechPresActionPerformed
 
-    private void btRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRetourActionPerformed
-
-    }//GEN-LAST:event_btRetourActionPerformed
+    private void btFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinActionPerformed
+        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_btFinActionPerformed
 
     private void BtMajPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtMajPresActionPerformed
         if (txtIdPres.isEditable()) {
@@ -239,8 +240,8 @@ public class RechPres extends javax.swing.JPanel {
     private javax.swing.JLabel IdMedPres;
     private javax.swing.JLabel IdPat;
     private javax.swing.JLabel IdPatPres;
+    private javax.swing.JButton btFin;
     private javax.swing.JButton btRechPres;
-    private javax.swing.JButton btRetour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JFormattedTextField txtDatPres;
     private javax.swing.JTextField txtIdMedPres;

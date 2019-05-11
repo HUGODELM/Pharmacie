@@ -63,6 +63,7 @@ public class RechPatNom extends javax.swing.JPanel {
         TelPat = new javax.swing.JLabel();
         IdPat = new javax.swing.JLabel();
         BtRechNomPat = new javax.swing.JButton();
+        btFin1 = new javax.swing.JButton();
 
         TabPres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,6 +90,13 @@ public class RechPatNom extends javax.swing.JPanel {
             }
         });
 
+        btFin1.setText("Quitter");
+        btFin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFin1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,11 +114,14 @@ public class RechPatNom extends javax.swing.JPanel {
                         .addComponent(IdPat))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(BtRechNomPat))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(BtRechNomPat)
+                        .addGap(247, 247, 247)
+                        .addComponent(btFin1, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)))
+                .addGap(55, 55, 55))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +135,9 @@ public class RechPatNom extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BtRechNomPat)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtRechNomPat)
+                    .addComponent(btFin1))
                 .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -160,6 +173,11 @@ public class RechPatNom extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BtRechNomPatActionPerformed
 
+    private void btFin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFin1ActionPerformed
+        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_btFin1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtRechNomPat;
@@ -168,6 +186,7 @@ public class RechPatNom extends javax.swing.JPanel {
     private javax.swing.JTable TabPres;
     private javax.swing.JLabel TelPat;
     private javax.swing.JTextField TxtNomPat;
+    private javax.swing.JButton btFin1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

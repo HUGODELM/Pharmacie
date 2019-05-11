@@ -53,9 +53,9 @@ public class RechPat extends javax.swing.JPanel {
         txtPrePat = new javax.swing.JTextField();
         txtTelPat = new javax.swing.JTextField();
         btRechPat = new javax.swing.JButton();
-        btRetour = new javax.swing.JButton();
         BtMajPat = new javax.swing.JButton();
         BtDelPat = new javax.swing.JButton();
+        btFin1 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -74,13 +74,6 @@ public class RechPat extends javax.swing.JPanel {
             }
         });
 
-        btRetour.setText("Retour");
-        btRetour.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRetourActionPerformed(evt);
-            }
-        });
-
         BtMajPat.setText("Mise à jour");
         BtMajPat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,19 +88,26 @@ public class RechPat extends javax.swing.JPanel {
             }
         });
 
+        btFin1.setText("Quitter");
+        btFin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFin1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btRechPat, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(BtMajPat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(BtMajPat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(BtDelPat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btRetour)
-                .addGap(23, 23, 23))
+                .addGap(18, 18, 18)
+                .addComponent(btFin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +152,7 @@ public class RechPat extends javax.swing.JPanel {
                     .addComponent(btRechPat)
                     .addComponent(BtMajPat)
                     .addComponent(BtDelPat)
-                    .addComponent(btRetour))
+                    .addComponent(btFin1))
                 .addGap(52, 52, 52))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -171,10 +171,6 @@ public class RechPat extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e.getMessage(), "ERREUR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btRechPatActionPerformed
-
-    private void btRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRetourActionPerformed
-
-    }//GEN-LAST:event_btRetourActionPerformed
 
     private void BtMajPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtMajPatActionPerformed
         if (txtIdPat.isEditable()) {
@@ -216,6 +212,11 @@ public class RechPat extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BtDelPatActionPerformed
 
+    private void btFin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFin1ActionPerformed
+        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_btFin1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtDelPat;
@@ -224,8 +225,8 @@ public class RechPat extends javax.swing.JPanel {
     private javax.swing.JLabel NomPat;
     private javax.swing.JLabel PrePat;
     private javax.swing.JLabel TelPat;
+    private javax.swing.JButton btFin1;
     private javax.swing.JButton btRechPat;
-    private javax.swing.JButton btRetour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtIdPat;
     private javax.swing.JTextField txtNomPat;

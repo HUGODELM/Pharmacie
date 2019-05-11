@@ -45,10 +45,10 @@
               <Component id="btRechPres" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="BtMajPres" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Component id="BtDelPres" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btRetour" min="-2" max="-2" attributes="0"/>
+              <Component id="btFin" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -79,7 +79,7 @@
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btRechPres" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btRetour" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btFin" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtMajPres" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtDelPres" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -123,12 +123,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRechPresActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btRetour">
+    <Component class="javax.swing.JButton" name="btFin">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Retour"/>
+        <Property name="text" type="java.lang.String" value="Quitter"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRetourActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFinActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BtMajPres">

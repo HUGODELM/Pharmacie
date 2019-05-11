@@ -48,7 +48,7 @@ public class CreaPres extends javax.swing.JPanel {
         txtidentifMed = new javax.swing.JTextField();
         txtIdentifPat = new javax.swing.JTextField();
         btCreaPres = new javax.swing.JButton();
-        btRetour = new javax.swing.JButton();
+        btFin = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -73,10 +73,10 @@ public class CreaPres extends javax.swing.JPanel {
             }
         });
 
-        btRetour.setText("Retour");
-        btRetour.addActionListener(new java.awt.event.ActionListener() {
+        btFin.setText("Quitter");
+        btFin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRetourActionPerformed(evt);
+                btFinActionPerformed(evt);
             }
         });
 
@@ -94,17 +94,13 @@ public class CreaPres extends javax.swing.JPanel {
                         .addComponent(IdentifMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(IdentifPat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdPres, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                            .addComponent(txtDatePres)
-                            .addComponent(txtidentifMed)
-                            .addComponent(txtIdentifPat))
-                        .addGap(71, 71, 71))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btRetour)
-                        .addGap(84, 84, 84))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtIdPres, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                    .addComponent(txtDatePres)
+                    .addComponent(txtidentifMed)
+                    .addComponent(txtIdentifPat)
+                    .addComponent(btFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +124,7 @@ public class CreaPres extends javax.swing.JPanel {
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCreaPres)
-                    .addComponent(btRetour))
+                    .addComponent(btFin))
                 .addGap(44, 44, 44))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -151,11 +147,10 @@ public class CreaPres extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdentifPatActionPerformed
 
-    private void btRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRetourActionPerformed
-        /* TestCreamed.tc.setContentPane(new MenuPr());
-        TestCreamed.tc.repaint();
-        TestCreamed.tc.revalidate();*/
-    }//GEN-LAST:event_btRetourActionPerformed
+    private void btFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinActionPerformed
+        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_btFinActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -164,7 +159,7 @@ public class CreaPres extends javax.swing.JPanel {
     private javax.swing.JLabel IdentifMed;
     private javax.swing.JLabel IdentifPat;
     private javax.swing.JButton btCreaPres;
-    private javax.swing.JButton btRetour;
+    private javax.swing.JButton btFin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtDatePres;
     private javax.swing.JTextField txtIdPres;

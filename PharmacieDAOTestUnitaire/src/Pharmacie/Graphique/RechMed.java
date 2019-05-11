@@ -58,9 +58,9 @@ public class RechMed extends javax.swing.JPanel {
         txtMatMed = new javax.swing.JTextField();
         txtTelMed = new javax.swing.JTextField();
         btRechMed = new javax.swing.JButton();
-        btRetour = new javax.swing.JButton();
         BtMajMed = new javax.swing.JButton();
         BtDelMed = new javax.swing.JButton();
+        btFin = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -91,13 +91,6 @@ public class RechMed extends javax.swing.JPanel {
             }
         });
 
-        btRetour.setText("Retour");
-        btRetour.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRetourActionPerformed(evt);
-            }
-        });
-
         BtMajMed.setText("Mise à jour");
         BtMajMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +102,13 @@ public class RechMed extends javax.swing.JPanel {
         BtDelMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtDelMedActionPerformed(evt);
+            }
+        });
+
+        btFin.setText("Quitter");
+        btFin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFinActionPerformed(evt);
             }
         });
 
@@ -136,13 +136,13 @@ public class RechMed extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btRechMed)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(BtMajMed)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(BtDelMed)
-                .addGap(18, 18, 18)
-                .addComponent(btRetour)
-                .addGap(21, 21, 21))
+                .addGap(37, 37, 37)
+                .addComponent(btFin, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,8 +171,8 @@ public class RechMed extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btRechMed)
                     .addComponent(BtMajMed)
-                    .addComponent(btRetour)
-                    .addComponent(BtDelMed))
+                    .addComponent(BtDelMed)
+                    .addComponent(btFin))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -196,10 +196,6 @@ public class RechMed extends javax.swing.JPanel {
     private void txtMatMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatMedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMatMedActionPerformed
-
-    private void btRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRetourActionPerformed
-
-    }//GEN-LAST:event_btRetourActionPerformed
 
     private void BtMajMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtMajMedActionPerformed
         if (txtIdMed.isEditable()) {
@@ -245,6 +241,11 @@ public class RechMed extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BtDelMedActionPerformed
 
+    private void btFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinActionPerformed
+        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_btFinActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtDelMed;
@@ -254,8 +255,8 @@ public class RechMed extends javax.swing.JPanel {
     private javax.swing.JLabel NomMed;
     private javax.swing.JLabel PreMed;
     private javax.swing.JLabel TelMed;
+    private javax.swing.JButton btFin;
     private javax.swing.JButton btRechMed;
-    private javax.swing.JButton btRetour;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtIdMed;

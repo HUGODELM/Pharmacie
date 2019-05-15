@@ -5,7 +5,7 @@
  */
 package DesignPatterns.metier;
 
-//import java.util.HashSet;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -16,7 +16,7 @@ import java.util.Set;
 public class Medicament {
     protected int idmedoc;
     protected String nom,desc,ref;
-    //protected Set<Infos> info=new HashSet<>();
+    protected Set<Infos> info=new HashSet<>();
     public Medicament(){
         
     }
@@ -59,13 +59,13 @@ public class Medicament {
         this.ref = ref;
     }
 
-   /* public Set<Infos> getInfo() {
+   public Set<Infos> getInfo() {
         return info;
     }
 
     public void setInfo(Set<Infos> info) {
         this.info = info;
-    }*/
+    }
 
     @Override
     public String toString() {

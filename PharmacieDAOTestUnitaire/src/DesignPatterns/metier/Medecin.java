@@ -78,7 +78,7 @@ public class Medecin {
 
     @Override
     public String toString() {
-        return "idmed: " + idmed + "\nmatricule: " + matricule + "\nnom: " + nom + "\nprenom: " + prenom + "\ntel: " + tel + "\npres: " + pres + '}';
+        return "idmed: " + idmed + "\nmatricule: " + matricule + "\nnom: " + nom + "\nprenom: " + prenom + "\ntel: " + tel + "\npres: " + pres ;
     }
 
     @Override

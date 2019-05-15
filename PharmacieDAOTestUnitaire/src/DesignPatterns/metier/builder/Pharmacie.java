@@ -15,7 +15,6 @@ import DesignPatterns.metier.Patient;
  * @author hugo.delmarche
  */
 public class Pharmacie {
-
     public static void main(String[] args) {
         Patient p = new Patient(1, "NomP", "PrenomP", "TelP");
         Medecin m = new Medecin(1, "MatM", "NomM", "PrenomM", "TelM");

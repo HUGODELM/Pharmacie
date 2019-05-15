@@ -7,6 +7,7 @@ package DesignPatterns.metier;
 
 
 //import java.util.HashSet;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ import java.util.Set;
 public class Patient {
     protected int idpat;
     protected String nom,prenom,tel;
-    //protected Set<Prescription> pres=new HashSet <>();
+    protected Set<Prescription> pres=new HashSet <>();
     public Patient(){
         
     }
@@ -60,13 +61,13 @@ public class Patient {
         this.tel = tel;
     }
 
-    /*public Set<Prescription> getPres() {
+    public Set<Prescription> getPres() {
         return pres;
     }
 
     public void setPres(Set<Prescription> pres) {
         this.pres = pres;
-    }*/
+    }
 
     @Override
     public int hashCode() {

@@ -527,7 +527,7 @@ public class PharmacieDAO {
     }
 
     public static void main(String[] args) throws SQLException {
-        //test update d'une prescription
+        /*test update d'une prescription
         Scanner sc2 = new Scanner(System.in);
              Prescription presactu = null;
         PrescriptionDAO presdao;

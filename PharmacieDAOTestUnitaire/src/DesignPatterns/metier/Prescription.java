@@ -5,58 +5,100 @@
  */
 package DesignPatterns.metier;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 /**
  *
  * @author huggy
  */
 public class Prescription {
-    //TODO doit inserer la table info pour vérifier qu'il y a bien des médicament liés à la prescritpion
-    protected int idpres, idmed, idpat;
+
+    protected int idpres;
+    protected Patient p;
+    protected Medecin m;
     protected String date;
-    private Prescription(PresBuilder pb){
-        this.idpres=pb.idpres;
-        this.idmed=pb.idmed;
-        this.idpat=pb.idpat;
-        this.date=pb.date;
+    protected Set<Infos> info=new HashSet<>(); 
+    public Prescription(){
+        
+    }
+    public Prescription(int idpres, Patient p, Medecin m, String date){
+        this.idpres=idpres;
+        this.date=date;
+        this.m=m;
+        this.p=p;
     }
 
     public int getIdpres() {
         return idpres;
     }
 
-    public int getIdmed() {
-        return idmed;
+    public void setIdpres(int idpres) {
+        this.idpres = idpres;
     }
 
-    public int getIdpat() {
-        return idpat;
+    public Patient getP() {
+        return p;
+    }
+
+    public void setP(Patient p) {
+        this.p = p;
+    }
+
+    public Medecin getM() {
+        return m;
+    }
+
+    public void setM(Medecin m) {
+        this.m = m;
     }
 
     public String getDate() {
         return date;
     }
-    
-    public static class PresBuilder {
-        protected int idpres, idmed, idpat;
-        protected String date;
 
-        public void setIdpres(int idpres) {
-            this.idpres = idpres;
-        }
-
-        public void setIdmed(int idmed) {
-            this.idmed = idmed;
-        }
-
-        public void setIdpat(int idpat) {
-            this.idpat = idpat;
-        }
-
-        public void setDate(String date) {
-            this.date = date;
-        }
-        public Prescription Build() throws Exception{
-            return new Prescription(this);
-        }
+    public void setDate(String date) {
+        this.date = date;
     }
+
+    public Set<Infos> getInfo() {
+        return info;
+    }
+
+    public void setInfo(Set<Infos> info) {
+        this.info = info;
+    }
+
+    @Override
+    public String toString() {
+        return"idpres: " + idpres + "\np: " + p + "\nm: " + m + "\ndate: " + date + "\ninfo: " + info + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.info);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Prescription other = (Prescription) obj;
+        if (!Objects.equals(this.info, other.info)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

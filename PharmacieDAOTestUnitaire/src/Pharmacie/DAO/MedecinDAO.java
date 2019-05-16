@@ -150,8 +150,14 @@ public class MedecinDAO extends DAO<Medecin> {
             }
         }
     }
+    /**
+     * recherche large sur le nom d'un médecin
+     * @param rech nom du médecin recherché
+     * @return liste contenant les id des médecins
+     * @throws SQLException 
+     */
     public List search(String rech) throws SQLException {
-        String query1 = "SELECT IDPAT, IDPRES,DATEPRESCRIPTION,IDMED FROM API_PRESCRIPTION NATURAL JOIN API_MEDECIN WHERE  NOM LIKE ?";
+        String query1 = "SELECT * FROM API_MEDECIN WHERE  NOM LIKE ?";
         List<Integer> idTab=new ArrayList();
         boolean trouver = false;
         try (PreparedStatement pstm = dbConnect.prepareStatement(query1)) {

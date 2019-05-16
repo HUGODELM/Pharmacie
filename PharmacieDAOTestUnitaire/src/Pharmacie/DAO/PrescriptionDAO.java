@@ -120,9 +120,9 @@ public class PrescriptionDAO extends DAO<Prescription> {
         }
     }
     /**
-     * 
-     * @param rech
-     * @return
+     * fonction recherchant toutes les prescriptions liées à un patient
+     * @param rech nom du patient recherché
+     * @return liste contenant les id des patients
      * @throws SQLException 
      */
      public List searchP(String rech) throws SQLException {
@@ -150,9 +150,10 @@ public class PrescriptionDAO extends DAO<Prescription> {
     }
      /**
       * 
-      * @param rech
-      * @return
-      * @throws SQLException 
+      * fonction recherchant toutes les prescriptions liées à un médecin
+     * @param rech nom du médecin recherché
+     * @return liste contenant les id des médecins
+     * @throws SQLException 
       */
      public List searchM(String rech) throws SQLException {
         String query1 = "SELECT IDPAT, IDPRES,DATEPRESCRIPTION,IDMED FROM API_PRESCRIPTION NATURAL JOIN API_MEDECIN WHERE  NOM LIKE ?";

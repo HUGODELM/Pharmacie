@@ -47,6 +47,7 @@ public class GestionPharma extends javax.swing.JFrame {
         rechPatNom1.setPresdao(presdao);
         rechPres1.setPresdao(presdao);
         creaPres1.setPresdao(presdao);
+        rechNomPat1.setPatdao(patdao);
     }
 
     /**
@@ -67,6 +68,7 @@ public class GestionPharma extends javax.swing.JFrame {
         rechPat1 = new Pharmacie.Graphique.RechPat();
         rechPatNom1 = new Pharmacie.Graphique.RechPatNom();
         rechPres1 = new Pharmacie.Graphique.RechPres();
+        rechNomPat1 = new Pharmacie.Graphique.RechNomPat();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuMed = new javax.swing.JMenu();
         MenuMedCrea = new javax.swing.JMenuItem();
@@ -95,6 +97,7 @@ public class GestionPharma extends javax.swing.JFrame {
 
         getContentPane().add(rechPatNom1, "cardRechNomPat");
         getContentPane().add(rechPres1, "cardRechPres");
+        getContentPane().add(rechNomPat1, "CardNomPat");
 
         MenuMed.setText("Médecin");
 
@@ -202,7 +205,7 @@ public class GestionPharma extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuMedCreaActionPerformed
 
     private void MenuRechNomPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechNomPatActionPerformed
-        
+        cardl.show(this.getContentPane(), "CardNomPat");
     }//GEN-LAST:event_MenuRechNomPatActionPerformed
 
     private void MenuCreaPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreaPresActionPerformed
@@ -291,6 +294,7 @@ public class GestionPharma extends javax.swing.JFrame {
     private Pharmacie.Graphique.MenuPrinc menuPrinc1;
     private Pharmacie.Graphique.RechMed rechMed1;
     private Pharmacie.Graphique.RechMedNom rechMedNom1;
+    private Pharmacie.Graphique.RechNomPat rechNomPat1;
     private Pharmacie.Graphique.RechPat rechPat1;
     private Pharmacie.Graphique.RechPatNom rechPatNom1;
     private Pharmacie.Graphique.RechPres rechPres1;

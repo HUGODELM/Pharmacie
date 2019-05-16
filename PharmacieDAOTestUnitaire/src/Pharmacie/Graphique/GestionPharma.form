@@ -197,5 +197,12 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="Pharmacie.Graphique.RechNomPat" name="rechNomPat1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+          <CardConstraints cardName="CardNomPat"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>

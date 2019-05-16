@@ -5,8 +5,8 @@
  */
 package Pharmacie.Graphique;
 
-import Pharmacie.DAO.PatientDAO;
-import Pharmacie.metier.Patient;
+import Pharmacie.DAO.MedecinDAO;
+import Pharmacie.metier.Medecin;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
@@ -17,18 +17,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author huggy
  */
-public class RechNomPat extends javax.swing.JPanel {
+public class RechNomMed extends javax.swing.JPanel {
 
-    PatientDAO patdao = null;
-    Patient p;
+    MedecinDAO meddao = null;
+    Medecin m;
     DefaultTableModel dft1 = new DefaultTableModel();
 
     /**
      * Creates new form RechPatNom
      */
-    public RechNomPat() {
+    public RechNomMed() {
         initComponents();
         dft1.addColumn("Identifiant");
+        dft1.addColumn("Matricule");
         dft1.addColumn("Nom");
         dft1.addColumn("Prénom");
         dft1.addColumn("Téléphone");
@@ -36,8 +37,8 @@ public class RechNomPat extends javax.swing.JPanel {
     }
 
 
-    public void setPatdao(PatientDAO patdao) {
-        this.patdao = patdao;
+    public void setMeddao(MedecinDAO meddao) {
+        this.meddao = meddao;
     }
 
     /**
@@ -120,20 +121,21 @@ public class RechNomPat extends javax.swing.JPanel {
         String nom = TxtNomPat.getText();
         List idTab;
         try {
-            idTab = patdao.search(nom);
+            idTab = meddao.search(nom);
             if ((int) idTab.get(0) != 0) {
                 for (int i = 0; i < idTab.size(); i++) {
                     Vector v = new Vector();
-                    p = patdao.read((int) idTab.get(i));
-                    v.add(p.getIdpat());
-                    v.add(p.getNom());
-                    v.add(p.getPrenom());
-                    v.add(p.getTel());
+                    m = meddao.read((int) idTab.get(i));
+                    v.add(m.getIdmed());
+                    v.add(m.getMatricule());
+                    v.add(m.getNom());
+                    v.add(m.getPrenom());
+                    v.add(m.getTel());
                     dft1.addRow(v);
                 }
             }
              else{
-                JOptionPane.showMessageDialog(this, "Patient inconnu", "", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Medecin inconnu", "", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERREURSQL", JOptionPane.ERROR_MESSAGE);

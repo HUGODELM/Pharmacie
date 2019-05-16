@@ -48,6 +48,7 @@ public class GestionPharma extends javax.swing.JFrame {
         rechPres1.setPresdao(presdao);
         creaPres1.setPresdao(presdao);
         rechNomPat1.setPatdao(patdao);
+        rechNomMed1.setMeddao(medecinDAO);
     }
 
     /**
@@ -69,6 +70,7 @@ public class GestionPharma extends javax.swing.JFrame {
         rechPatNom1 = new Pharmacie.Graphique.RechPatNom();
         rechPres1 = new Pharmacie.Graphique.RechPres();
         rechNomPat1 = new Pharmacie.Graphique.RechNomPat();
+        rechNomMed1 = new Pharmacie.Graphique.RechNomMed();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuMed = new javax.swing.JMenu();
         MenuMedCrea = new javax.swing.JMenuItem();
@@ -98,6 +100,7 @@ public class GestionPharma extends javax.swing.JFrame {
         getContentPane().add(rechPatNom1, "cardRechNomPat");
         getContentPane().add(rechPres1, "cardRechPres");
         getContentPane().add(rechNomPat1, "CardNomPat");
+        getContentPane().add(rechNomMed1, "CardNomMed");
 
         MenuMed.setText("Médecin");
 
@@ -212,7 +215,7 @@ public class GestionPharma extends javax.swing.JFrame {
         cardl.show(this.getContentPane(), "cardCreaPres");    }//GEN-LAST:event_MenuCreaPresActionPerformed
 
     private void MenuRechNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechNomActionPerformed
-        
+         cardl.show(this.getContentPane(), "CardNomMed");
     }//GEN-LAST:event_MenuRechNomActionPerformed
 
     private void MenuCreaPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreaPatActionPerformed
@@ -294,6 +297,7 @@ public class GestionPharma extends javax.swing.JFrame {
     private Pharmacie.Graphique.MenuPrinc menuPrinc1;
     private Pharmacie.Graphique.RechMed rechMed1;
     private Pharmacie.Graphique.RechMedNom rechMedNom1;
+    private Pharmacie.Graphique.RechNomMed rechNomMed1;
     private Pharmacie.Graphique.RechNomPat rechNomPat1;
     private Pharmacie.Graphique.RechPat rechPat1;
     private Pharmacie.Graphique.RechPatNom rechPatNom1;

@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -117,5 +119,66 @@ public class PrescriptionDAO extends DAO<Prescription> {
 
         }
     }
+    /**
+     * 
+     * @param rech
+     * @return
+     * @throws SQLException 
+     */
+     public List searchP(String rech) throws SQLException {
+        String query1 = "SELECT IDPAT, IDPRES,DATEPRESCRIPTION,IDMED FROM API_PRESCRIPTION NATURAL JOIN API_PATIENT WHERE  NOM LIKE ?";
+        List<Integer> idTab = new ArrayList();
+        boolean trouver = false;
+        try (PreparedStatement pstm = dbConnect.prepareStatement(query1)) {
+            pstm.setString(1,  rech );
+            try (ResultSet rs = pstm.executeQuery()) {
+                while (rs.next()) {
+                    trouver = true;
+                    int id = rs.getInt("IDPRES");
+                    idTab.add(id);
+
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("erreur " + e);
+        }
+        if (!trouver) {
+            System.out.println("Aucune prescription trouvée...");
+            idTab.add(0);
+        }
+        return idTab;
+    }
+     /**
+      * 
+      * @param rech
+      * @return
+      * @throws SQLException 
+      */
+     public List searchM(String rech) throws SQLException {
+        String query1 = "SELECT IDPAT, IDPRES,DATEPRESCRIPTION,IDMED FROM API_PRESCRIPTION NATURAL JOIN API_MEDECIN WHERE  NOM LIKE ?";
+        List<Integer> idTab=new ArrayList();
+        boolean trouver = false;
+        try (PreparedStatement pstm = dbConnect.prepareStatement(query1)) {
+            pstm.setString(1, rech);
+            try (ResultSet rs = pstm.executeQuery()) {
+                while (rs.next()) {
+                    trouver = true;
+                    int id = rs.getInt("IDPRES");
+                    idTab.add(id);
+                    
+                }
+            }
+        }
+        catch(SQLException e){
+            System.out.println("erreur "+e);
+        }
+        if(!trouver){
+            System.out.println("Aucune prescription trouvée...");
+            idTab.add(0);
+        }
+            return idTab;
+    }
 
 }
+
+

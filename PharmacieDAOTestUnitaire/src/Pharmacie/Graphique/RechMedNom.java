@@ -178,7 +178,7 @@ public class RechMedNom extends javax.swing.JPanel {
     }//GEN-LAST:event_BtRechMedNomActionPerformed
 
     private void btFin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFin1ActionPerformed
-        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Au revoir", "Fermeture", JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }//GEN-LAST:event_btFin1ActionPerformed
 

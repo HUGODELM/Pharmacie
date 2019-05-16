@@ -57,7 +57,7 @@ public class RechPres extends javax.swing.JPanel {
         btFin = new javax.swing.JButton();
         BtMajPres = new javax.swing.JButton();
         BtDelPres = new javax.swing.JButton();
-        txtDatPres = new javax.swing.JFormattedTextField();
+        txtDatPres = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -94,12 +94,6 @@ public class RechPres extends javax.swing.JPanel {
         BtDelPres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtDelPresActionPerformed(evt);
-            }
-        });
-
-        txtDatPres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDatPresActionPerformed(evt);
             }
         });
 
@@ -177,7 +171,7 @@ public class RechPres extends javax.swing.JPanel {
     }//GEN-LAST:event_btRechPresActionPerformed
 
     private void btFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinActionPerformed
-        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Au revoir", "Fermeture", JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }//GEN-LAST:event_btFinActionPerformed
 
@@ -228,10 +222,6 @@ public class RechPres extends javax.swing.JPanel {
 
     }//GEN-LAST:event_BtDelPresActionPerformed
 
-    private void txtDatPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatPresActionPerformed
-        
-    }//GEN-LAST:event_txtDatPresActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtDelPres;
@@ -243,7 +233,7 @@ public class RechPres extends javax.swing.JPanel {
     private javax.swing.JButton btFin;
     private javax.swing.JButton btRechPres;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JFormattedTextField txtDatPres;
+    private javax.swing.JTextField txtDatPres;
     private javax.swing.JTextField txtIdMedPres;
     private javax.swing.JTextField txtIdPatPres;
     private javax.swing.JTextField txtIdPres;

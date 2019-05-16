@@ -111,7 +111,7 @@ public class Patient extends Observer{
     
     @Override
     public void update(String msg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(prenom+" "+nom+" à recu le message: "+msg);
     }
     
 }

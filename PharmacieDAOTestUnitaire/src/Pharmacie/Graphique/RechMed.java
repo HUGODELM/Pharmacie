@@ -242,7 +242,7 @@ public class RechMed extends javax.swing.JPanel {
     }//GEN-LAST:event_BtDelMedActionPerformed
 
     private void btFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinActionPerformed
-        JOptionPane.showMessageDialog(this, "Au revoir", "Mise à jour", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Au revoir", "Fermeture", JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }//GEN-LAST:event_btFinActionPerformed
 

@@ -79,6 +79,8 @@ public class GestionPharma extends javax.swing.JFrame {
         MenuPres = new javax.swing.JMenu();
         MenuCreaPres = new javax.swing.JMenuItem();
         MenuRechPres = new javax.swing.JMenuItem();
+        PresRechPat = new javax.swing.JMenuItem();
+        RechMedNom = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -168,6 +170,22 @@ public class GestionPharma extends javax.swing.JFrame {
         });
         MenuPres.add(MenuRechPres);
 
+        PresRechPat.setText("Recherche Patient");
+        PresRechPat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PresRechPatActionPerformed(evt);
+            }
+        });
+        MenuPres.add(PresRechPat);
+
+        RechMedNom.setText("Recherche Médecin");
+        RechMedNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RechMedNomActionPerformed(evt);
+            }
+        });
+        MenuPres.add(RechMedNom);
+
         jMenuBar1.add(MenuPres);
 
         setJMenuBar(jMenuBar1);
@@ -184,14 +202,14 @@ public class GestionPharma extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuMedCreaActionPerformed
 
     private void MenuRechNomPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechNomPatActionPerformed
-        cardl.show(this.getContentPane(), "cardRechNomPat");
+        
     }//GEN-LAST:event_MenuRechNomPatActionPerformed
 
     private void MenuCreaPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreaPresActionPerformed
         cardl.show(this.getContentPane(), "cardCreaPres");    }//GEN-LAST:event_MenuCreaPresActionPerformed
 
     private void MenuRechNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechNomActionPerformed
-        cardl.show(this.getContentPane(), "cardRechMedNom");
+        
     }//GEN-LAST:event_MenuRechNomActionPerformed
 
     private void MenuCreaPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreaPatActionPerformed
@@ -205,6 +223,14 @@ public class GestionPharma extends javax.swing.JFrame {
     private void MenuRechPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRechPresActionPerformed
         cardl.show(this.getContentPane(), "cardRechPres");
     }//GEN-LAST:event_MenuRechPresActionPerformed
+
+    private void PresRechPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PresRechPatActionPerformed
+        cardl.show(this.getContentPane(), "cardRechNomPat");
+    }//GEN-LAST:event_PresRechPatActionPerformed
+
+    private void RechMedNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechMedNomActionPerformed
+        cardl.show(this.getContentPane(), "cardRechMedNom");
+    }//GEN-LAST:event_RechMedNomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,7 +281,9 @@ public class GestionPharma extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuRechNomPat;
     private javax.swing.JMenuItem MenuRechPat;
     private javax.swing.JMenuItem MenuRechPres;
+    private javax.swing.JMenuItem PresRechPat;
     private javax.swing.JMenuItem RechMed;
+    private javax.swing.JMenuItem RechMedNom;
     private Pharmacie.Graphique.CreaMed2 creaMed23;
     private Pharmacie.Graphique.CreaPat creaPat1;
     private Pharmacie.Graphique.CreaPres creaPres1;

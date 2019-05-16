@@ -66,6 +66,7 @@ public class Medecin extends Subject{
 
     public void setTel(String tel) {
         this.tel = tel;
+        NotifyObserver();
     }
 
     public Set<Prescription> getPres() {
@@ -109,7 +110,7 @@ public class Medecin extends Subject{
     
     @Override
     public String getNotification() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Nouveau numéro de téléphone de "+nom+" "+prenom+": "+tel;
     }
     
 }

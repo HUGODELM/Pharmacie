@@ -37,12 +37,14 @@
                       <Component id="TxtMatMed" min="-2" pref="98" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="IdMed" pref="57" max="32767" attributes="0"/>
-                          <Component id="NomMed" max="32767" attributes="0"/>
-                          <Component id="PreMed" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="NomMed" max="32767" attributes="0"/>
+                              <Component id="PreMed" pref="57" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="IdMed" min="-2" pref="57" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="236" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtIdMed" pref="98" max="32767" attributes="0"/>
                           <Component id="txtNomMed" max="32767" attributes="0"/>
@@ -54,7 +56,7 @@
                           <Component id="TelPat" alignment="0" max="32767" attributes="0"/>
                           <Component id="btCreaMed" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="220" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtTelMed" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
@@ -72,26 +74,21 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="NomMed" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtIdMed" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtIdMed" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="IdMed" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtNomMed" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="PreMed" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="IdMed" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="txtPreMed" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtPreMed" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="NomMed" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="MatMed" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="TxtMatMed" alignment="1" min="-2" max="-2" attributes="0"/>

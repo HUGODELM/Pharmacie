@@ -165,7 +165,7 @@ public class MedecinDAO extends DAO<Medecin> {
             try (ResultSet rs = pstm.executeQuery()) {
                 while (rs.next()) {
                     trouver = true;
-                    int id = rs.getInt("IDPRES");
+                    int id = rs.getInt("IDMED");
                     idTab.add(id);
                     
                 }
